@@ -4,6 +4,7 @@ import Animacio from '../Components/Animacio/animacio'
 import Interficie from '../Components/Interficie/Interficie'
 import { Switch, Route, Router} from 'react-router-dom';
 import history from './history';
+import Admin from '../Components/Admin/Admin'
 
 export default function Routes() {        
   return (
@@ -19,6 +20,9 @@ export default function Routes() {
           </Route>
           <Route path="/animacio">
             <Animacio />
+          </Route>
+          <Route path="/admin">
+            <Admin />
           </Route>
          
        

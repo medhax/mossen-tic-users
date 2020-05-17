@@ -1,0 +1,21 @@
+
+.root {
+    flexGrow: 1;
+  }
+  .icono{
+    position: relative !important;
+    left:0vw  !important;
+  }
+  .title {
+    flex-grow: 1;
+  }
+  .nom{
+    position:absolute;
+    top:5px;
+  
+    z-index:1;
+  }
+ . correu{
+    position:absolute;
+    top:30px;
+  }

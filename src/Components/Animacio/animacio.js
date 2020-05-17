@@ -11,8 +11,8 @@ class Animacio extends React.Component{
     
     render(){
         return(
-           
-        <div class="loader">     
+         <div className="root">  
+        <div className="loader">     
             <span>A</span>
             <span>L</span>
             <span>C</span>
@@ -22,7 +22,8 @@ class Animacio extends React.Component{
             <span>D</span>
             <span>E</span>
         </div>
-        
+        <p className="copyR">Copyright © 2020 aLCoxide Solutions - Tots els drets reservats</p>
+        </div>
         )
     }
 }

@@ -4,9 +4,9 @@ import {AppBar,IconButton ,MenuItem} from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import logoMossen from './img/logoMossen.png';
+import logoMossen from '../img/logoMossen.png';
 import { makeStyles } from '@material-ui/core/styles';
-
+import {Link} from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,11 +25,12 @@ const useStyles = makeStyles((theme) => ({
     position:'fixed',
     top:'5px',
     alignItems:'center',
+    fontSize:'1.7ex',
   },
   correu:{
     position:'fixed',
     top:'30px',
-    
+    fontSize:'1.7ex',
   }
 }));
     
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
       const classes = useStyles();
         return(
           <div className={classes.root}>
-          <AppBar color="inherit" position="absolute">
+          <AppBar color="inherit" position="fixed">
             <Toolbar>
             <Avatar className={classes.spacing}  src={props.foto}/>
               <MenuItem className={classes.spacing}> 
@@ -45,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
                 <Typography className={classes.correu} variant="subtitle1">femeniesfrancisca12345@iesmossenalcover.cat</Typography>
                </MenuItem>
 
-              <IconButton  aria-label="log out" component="span">
+              <Link to="/login"><IconButton  aria-label="log out" component="span">
               <ExitToAppIcon />
-            </IconButton>
+            </IconButton></Link>
             </Toolbar>
           </AppBar>
         </div>     
