@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:900");
+body{
+    font-family: Raleway, serif  !important;
+    background: rgb(208,208,208);
+    background: linear-gradient(90deg, rgba(208,208,208,1) 0%, rgba(251,248,248,1) 47%, rgba(208,208,208,1) 100%);
+}
+.qr{
+    width: 30ch;
+    height: 30ch;
+    background-color: darkgrey;
+}
+
+.botTemp{
+    font-size: x-small !important;
+    border-radius: 20px !important;
+}
+.NumTempe{
+    position: relative;
+    left: 20%;
+    text-shadow: 10px 10px 5px lightcoral;
+    color:pink;
+    
+    font-size: 70px !important;
+    font-weight: 800 !important;
+    font-family: Raleway;
+}
+
+.root{
+    margin-top:100px !important ;
+}
+
+.botoPrinc{
+    width: 90%;
+    border-radius: 20px !important;
+    margin:10px !important;
+    position: relative;
+    left:5%;
+}
+.botoPirncBox{
+    width: 100%;
+}
