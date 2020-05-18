@@ -3,17 +3,39 @@ import './Login.scss'
 import FadeIn from 'react-fade-in';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import logoAlcoxide from '../img/alcoxide.png'
-import logoMossen from '../img/logoMossen.png'
-import botonGoogle from '../img/googlebtn2x.png'
+import logoAlcoxide from '../../img/alcoxide.png'
+import logoMossen from '../../img/logoMossen.png'
 import Animacio from '../Animacio/animacio'
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
+
+
+ 
+
+const responseGoogleFailure = (response) => {
+alert("Algo falla!" + response);
+}
 
 class Login extends React.Component{
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
+  responseGoogleSuccess(response) {
+
  
+  }
     render(){
+      const { match, location, history } = this.props;
+
         return(
-            <FadeIn>              
+          
+            <FadeIn>   
+                       
             <Grid container direction="column" alignItems="center" spacing={0}>
               <Grid item m={12}>
                <img alt="logoMossen" className="logoMossen" src={logoMossen}/>        
@@ -21,12 +43,20 @@ class Login extends React.Component{
 
               
               <Grid className="botonets" item>
-               <Link to="/interficie"> <img src={botonGoogle} className="botoGoogle"  alt="botonGoogle"/></Link><br/>
+              <GoogleLogin
+              className="botoGoogle"
+    clientId="1043027828905-d9ggaps55ucafvqv73volb6ks206r1bj.apps.googleusercontent.com"
+    buttonText="Iniciar sessió amb google"
+    onSuccess={this.responseGoogleSuccess}
+    onFailure={responseGoogleFailure}
+    cookiePolicy={'single_host_origin'}
+  />  
+  <br/>
                <Link to="/admin"><Button variant="outlined" className="botoAdmin"  color="secondary">Accedir a la versió d'administrador</Button></Link> 
               </Grid>
              
               <Grid className="logoAlcoxideBox" item  xs={12}>
-                <img alt="logoAlcoxide" className="logoAlcoxide" width="60%" src={logoAlcoxide}/>
+                <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid>
             </FadeIn>
@@ -56,4 +86,4 @@ class PantallaPrinc extends React.Component{
     )
   }
 }
-export default PantallaPrinc;
+export default withRouter(PantallaPrinc);
