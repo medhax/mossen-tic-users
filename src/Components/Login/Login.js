@@ -6,31 +6,36 @@ import Grid from '@material-ui/core/Grid';
 import logoAlcoxide from '../../img/alcoxide.png'
 import logoMossen from '../../img/logoMossen.png'
 import Animacio from '../Animacio/animacio'
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
-import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
 
- 
 
-const responseGoogleFailure = (response) => {
-alert("Algo falla!" + response);
-}
+
+
 
 class Login extends React.Component{
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
-  responseGoogleSuccess(response) {
-
- 
+  constructor(props){
+    super(props);
+    this.state={
+      name:"",
+      email:"",
+      url:"",
+    }
   }
+  
     render(){
-      const { match, location, history } = this.props;
+      const responseGoogleSuccess = (response) => {
+        this.setState({name:response.profileObj.name})
+        this.setState({email:response.profileObj.email})
+        this.setState({url:response.profileObj.imageUrl})
+         
+        }
+      const responseGoogleFailure = (response) => {
+        alert("Algo falla!" + response);
+        }
+      
 
         return(
           
@@ -40,14 +45,14 @@ class Login extends React.Component{
               <Grid item m={12}>
                <img alt="logoMossen" className="logoMossen" src={logoMossen}/>        
               </Grid>
-
+        
               
               <Grid className="botonets" item>
-              <GoogleLogin
+             <GoogleLogin
               className="botoGoogle"
     clientId="1043027828905-d9ggaps55ucafvqv73volb6ks206r1bj.apps.googleusercontent.com"
     buttonText="Iniciar sessió amb google"
-    onSuccess={this.responseGoogleSuccess}
+    onSuccess={responseGoogleSuccess}
     onFailure={responseGoogleFailure}
     cookiePolicy={'single_host_origin'}
   />  

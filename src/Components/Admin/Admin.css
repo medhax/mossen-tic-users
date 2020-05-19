@@ -1,0 +1,15 @@
+.bottomNav{
+    width: 100%;
+    position:fixed;
+    bottom: 0px;
+    left: 0%;
+}
+.modul1{
+    border: solid 2px black;
+    margin: 10px;
+    height: 50%;
+    width: 50%;
+}
+.rootStats{
+    height: 100%;
+}

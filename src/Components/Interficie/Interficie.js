@@ -8,7 +8,7 @@ import {Button,Grid} from '@material-ui/core';
 import ReactQr from 'react-awesome-qr'
 import logoMossen from '../../img/logoMossen.png'
 import logoAlcoxide from '../../img/alcoxide.png'
-import FadeIn from 'react-fade-in';
+
 
 class Interficie extends React.Component{
   constructor(props){
@@ -33,7 +33,7 @@ class Interficie extends React.Component{
                     </path>
                     <mask id="knockout-text">
                     <rect width="100%" height="100%" fill="#fff" x="0" y="0" />
-                    <text x="147" y="227" fill="#000">Escaneja'm</text>
+                    <text x="147" y="227" color="black" fill="#00000">Escaneja'm</text>
                     </mask>
                 </svg>
                 

@@ -1,22 +1,22 @@
 .root{
 	width: 100%;
-	height: 100%;
 }
 .loader
 {
 	position: relative;
-	top:20vh;
 	display: flex;
-	left: 30%;
+	justify-content: center !important;
+	top: 5vh;
 }
 .loader span
 {
 	color: whitesmoke;
-	margin: 0 1.5vw;
+	margin: 0 2vw;
 	font-size: 8vmin;
 	font-weight: bold;
 	animation: animate 2.4s linear infinite;
 	font-family: sans-serif;
+	align-self: center
 }
 .loader span:nth-child(1)
 {
