@@ -11,9 +11,6 @@ import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
 
 
-
-
-
 class Login extends React.Component{
   constructor(props){
     super(props);
@@ -26,7 +23,9 @@ class Login extends React.Component{
   }
    
     render(){
-       
+      
+      
+       const email = this.state.email;
       const responseGoogleSuccess = (response) => {
         this.setState({name:response.profileObj.name});
         this.setState({email:response.profileObj.email});
@@ -66,7 +65,7 @@ class Login extends React.Component{
                 <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid>
-            {this.state.redirecting ? <Redirect to="/interficie?=esunexemple@gmail.com" /> : null }
+            {this.state.redirecting ? <Redirect to="/interficie" /> : null }
             </FadeIn>
         )
     }

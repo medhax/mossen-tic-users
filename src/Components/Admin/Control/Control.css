@@ -1,0 +1,29 @@
+.container-1 div, .container-2{
+    border: solid black 1 px;
+    margin :5px;
+    padding: 4px;
+    background-color: white;
+    min-height:  40% !important ;
+}
+.container-1{
+    display: flex;
+}
+
+.box-1{
+    flex: 1;
+ 
+
+}
+.box-2{
+    flex: 1;
+  
+
+}
+
+.container-2{
+
+}
+
+.botons{
+    flex-direction:  !important;
+}

@@ -5,8 +5,9 @@ import InfoIcon from '@material-ui/icons/Info';
 import AppsIcon from '@material-ui/icons/Apps';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import './Admin.css'
-import Info from './ModulsAdmin/Info'
-import Stats from './ModulsAdmin/Stats'
+import Info from './Info/Info';
+import Stats from './Stats/Stats';
+import Control from './Control/Control'
 export default function Admin(){
     const [screen, setScreen] = React.useState(0);
 function canviaScreen() {
@@ -18,7 +19,7 @@ function canviaScreen() {
         <Stats/>
       )
       case 2: return(
-        <h2>info</h2>
+        <Control/>
     )
     
   }

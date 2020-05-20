@@ -13,14 +13,14 @@ export default function NavBar() {
 <Container  className={"contenedor"}  maxWidth="lg">
   <Grid container spacing={3} justify="space-between" alignItems="stretch">
     <Grid item xs>
-    <div class="button-container-1">
-      <span class="mas">1r Eso</span>
+    <div className="button-container-1">
+      <span className="mas">1r Eso</span>
     <button id='work' type="button" name="Hover">1r Eso</button>
   </div>
     </Grid>
     <Grid item xs>
-    <div class="button-container-1">
-      <span class="mas">2n Eso</span>
+    <div className="button-container-1">
+      <span className="mas">2n Eso</span>
     <button id='work' type="button" name="Hover">2n Eso</button>
   </div>
     </Grid>
@@ -30,14 +30,14 @@ export default function NavBar() {
 
   <Grid container spacing={3} justify="space-between" alignItems="stretch">
   <Grid item xs>
-  <div class="button-container-1">
-      <span class="mas">3r Eso</span>
+  <div className="button-container-1">
+      <span className="mas">3r Eso</span>
     <button id='work' type="button" name="Hover">3r Eso</button>
   </div>
     </Grid>
     <Grid item xs>
-    <div class="button-container-1">
-      <span class="mas">4t Eso</span>
+    <div className="button-container-1">
+      <span className="mas">4t Eso</span>
     <button id='work' type="button" name="Hover">4t Eso</button>
   </div>
     </Grid>
@@ -47,14 +47,14 @@ export default function NavBar() {
 
   <Grid container spacing={3} justify="space-between" alignItems="stretch">
   <Grid item xs>
-  <div class="button-container-1">
-      <span class="mas">1r Batx</span>
+  <div className="button-container-1">
+      <span className="mas">1r Batx</span>
     <button id='work' type="button" name="Hover">1r Batx</button>
   </div>
     </Grid>
     <Grid item xs>
-    <div class="button-container-1">
-      <span class="mas">2n Batx</span>
+    <div className="button-container-1">
+      <span className="mas">2n Batx</span>
     <button id='work' type="button" name="Hover">2n Batx</button>
   </div>
     </Grid>
@@ -63,14 +63,14 @@ export default function NavBar() {
 
   <Grid container spacing={3} justify="space-between" alignItems="stretch">
   <Grid item xs>
-  <div class="button-container-1">
-      <span class="mas">FP</span>
+  <div className="button-container-1">
+      <span className="mas">FP</span>
     <button id='work' type="button" name="Hover">FP</button>
   </div>
     </Grid>
     <Grid item xs>
-    <div class="button-container-1">
-      <span class="mas">FP</span>
+    <div className="button-container-1">
+      <span className="mas">FP</span>
     <button id='work' type="button" name="Hover">FP</button>
   </div>
     </Grid>
@@ -80,14 +80,14 @@ export default function NavBar() {
 
   <Grid container spacing={3} justify="space-between" alignItems="stretch">
   <Grid item xs>
-  <div class="button-container-1">
-      <span class="mas">FP</span>
+  <div className="button-container-1">
+      <span className="mas">FP</span>
     <button id='work' type="button" name="Hover">FP</button>
   </div>
     </Grid>
     <Grid item xs>
-    <div class="button-container-1">
-      <span class="mas">Personal</span>
+    <div className="button-container-1">
+      <span className="mas">Personal</span>
     <button id='work' type="button" name="Hover">Personal</button>
   </div>
     </Grid>
