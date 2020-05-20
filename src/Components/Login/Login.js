@@ -6,10 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import logoAlcoxide from '../../img/alcoxide.png'
 import logoMossen from '../../img/logoMossen.png'
 import Animacio from '../Animacio/animacio'
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
-
 
 
 
@@ -18,19 +17,21 @@ import { withRouter } from "react-router";
 class Login extends React.Component{
   constructor(props){
     super(props);
-    this.state={
+    this.state = {
       name:"",
       email:"",
       url:"",
+      redirecting:false,
     }
   }
-  
+   
     render(){
+       
       const responseGoogleSuccess = (response) => {
-        this.setState({name:response.profileObj.name})
-        this.setState({email:response.profileObj.email})
-        this.setState({url:response.profileObj.imageUrl})
-         
+        this.setState({name:response.profileObj.name});
+        this.setState({email:response.profileObj.email});
+        this.setState({url:response.profileObj.imageUrl});
+        this.setState({redirecting:true});
         }
       const responseGoogleFailure = (response) => {
         alert("Algo falla!" + response);
@@ -56,6 +57,7 @@ class Login extends React.Component{
     onFailure={responseGoogleFailure}
     cookiePolicy={'single_host_origin'}
   />  
+  
   <br/>
                <Link to="/admin"><Button variant="outlined" className="botoAdmin"  color="secondary">Accedir a la versió d'administrador</Button></Link> 
               </Grid>
@@ -64,6 +66,7 @@ class Login extends React.Component{
                 <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid>
+            {this.state.redirecting ? <Redirect to="/interficie?=esunexemple@gmail.com" /> : null }
             </FadeIn>
         )
     }
@@ -87,6 +90,7 @@ class PantallaPrinc extends React.Component{
     return(
       <div>
       {animacioOn ? <Animacio/> : <Login/>}
+      
       </div>
     )
   }
