@@ -1,22 +1,23 @@
 .container-1 div, .container-2{
-    border: solid black 1 px;
+   
     margin :5px;
     padding: 4px;
     background-color: white;
-    min-height:  40% !important ;
+    
 }
 .container-1{
     display: flex;
+    
 }
 
 .box-1{
     flex: 1;
- 
-
+    border: solid black 1px !important;
+    
 }
 .box-2{
     flex: 1;
-  
+    border: solid black 1px !important;
 
 }
 
@@ -25,5 +26,31 @@
 }
 
 .botons{
-    flex-direction:  !important;
+    display: flex;
+    margin: 5px;
+}
+.exportar{
+    align-self: flex-end;
+    margin: 20px !important;
+}
+
+.titols{
+    display: flex;
+    flex-direction: column;
+    flex: 2 ;
+}
+.notificacions{
+    display:flex ;
+}
+
+.botonsNotis{
+    display: flex;
+    padding: 5px;
+}
+
+.botonsNotis{
+    align-self:center ;
+}
+.importarImg{
+    max-width: 40%;
 }

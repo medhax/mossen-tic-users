@@ -11,10 +11,7 @@ import logoAlcoxide from '../../img/alcoxide.png'
 
 
 class Interficie extends React.Component{
-  constructor(props){
-    super(props);
- 
-  }
+  
   render(){
  
     const correu = 'mecachis';

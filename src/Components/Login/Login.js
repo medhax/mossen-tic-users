@@ -24,8 +24,6 @@ class Login extends React.Component{
    
     render(){
       
-      
-       const email = this.state.email;
       const responseGoogleSuccess = (response) => {
         this.setState({name:response.profileObj.name});
         this.setState({email:response.profileObj.email});
