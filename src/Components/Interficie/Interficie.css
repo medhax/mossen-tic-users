@@ -10,7 +10,7 @@ body{
 }
 .NumTempe{
     position: relative;
-    left: 20%;
+  
     text-shadow: 10px 10px 5px lightcoral;
     color:pink;  
     font-size: 70px !important;
@@ -21,25 +21,30 @@ body{
 
 .root{
     margin-top:80px !important ;
+    display: flex ;
+    
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .botoPrinc{
-    width: 90%;
+    height: 5vh;
+    width: 60vw;
     border-radius: 20px !important;
     margin:10px !important;
     position: relative;
-    left:5%;
+    
+
 }
-.botoPirncBox{
-    width: 100%;
-}
+
 
 .logoAlco{
     opacity: 0.6;
     width: 40%;
 }
 .QrBoxinga{
-    flex-grow: 1;
+    
     padding:20px ;
     background-color: white;
     border-radius: 25px;

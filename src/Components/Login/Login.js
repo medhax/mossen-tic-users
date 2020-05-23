@@ -15,9 +15,9 @@ class Login extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      name:"",
-      email:"",
-      url:"",
+     profileObj: {
+
+     },
       redirecting:false,
     }
   }
@@ -25,13 +25,14 @@ class Login extends React.Component{
     render(){
       
       const responseGoogleSuccess = (response) => {
-        this.setState({name:response.profileObj.name});
-        this.setState({email:response.profileObj.email});
-        this.setState({url:response.profileObj.imageUrl});
-        this.setState({redirecting:true});
+       
+        this.setState({profileObj: response.profileObj,
+                    redirecting:true
+        });
+        
         }
       const responseGoogleFailure = (response) => {
-        alert("Algo falla!" + response);
+        alert("Algo falla!" + JSON.stringify(response));
         }
       
 
@@ -63,7 +64,10 @@ class Login extends React.Component{
                 <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid>
-            {this.state.redirecting ? <Redirect to="/interficie" /> : null }
+            {this.state.redirecting ? <Redirect to={{
+            pathname: '/interficie',
+            state: {usuari: this.state.profileObj,}
+        }}/> : null }
             </FadeIn>
         )
     }

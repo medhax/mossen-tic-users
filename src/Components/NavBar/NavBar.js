@@ -26,17 +26,17 @@ const useStyles = makeStyles((theme) => ({
           <div className={classes.root}>
           <AppBar  color="inherit" position="fixed">
             <Toolbar >
-            <Avatar className={classes.menuButton}  src={props.foto}/>
+            <Avatar className={classes.menuButton}  src={props.usuari.imageUrl}/>
               <MenuItem className={classes.title}> 
                 <div>
-                <Typography >Francina Femenies</Typography>
+                <Typography >{props.usuari.name}</Typography>
                 <span></span>
-                <Typography >femeniesfrancisca12345@iesmossenalcover.cat</Typography>
+                <Typography >{props.usuari.email}</Typography>
                 </div>
                </MenuItem>
 
-              <Link to="/"><IconButton className={classes.icono} aria-label="log out" component="span">
-              <ExitToAppIcon />
+              <Link style={{color: 'transparent'}} to="/"><IconButton className={classes.icono} aria-label="log out" component="span">
+            <Typography>Sortir</Typography>  <ExitToAppIcon />
             </IconButton></Link>
             </Toolbar>
           </AppBar>
