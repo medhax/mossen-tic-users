@@ -8,7 +8,7 @@ import {Button,Grid} from '@material-ui/core';
 import ReactQr from 'react-awesome-qr'
 import logoMossen from '../../img/logoMossen.png'
 import logoAlcoxide from '../../img/alcoxide.png'
-
+import {Link} from "react-router-dom";
 
 class Interficie extends React.Component{
   
@@ -30,7 +30,7 @@ class Interficie extends React.Component{
                     </path>
                     <mask id="knockout-text">
                     <rect width="100%" height="100%" fill="#fff" x="0" y="0"/>
-                    <text x="147" y="227" color="black" fill="#000ff">Escaneja'm</text>
+                    <text x="147" y="227"  fill="#000ff">Escaneja'm</text>
                     </mask>
                 </svg>
                 
@@ -43,8 +43,8 @@ class Interficie extends React.Component{
               </Grid>
              
               <Grid className="botoPirncBox" item  xs={12}>
-        <Button className="botoPrinc" color="primary" size="large" startIcon={<HelpIcon />} variant="contained">Notificacions del centr</Button>
-        <Button className="botoPrinc" color="primary" size="large" startIcon={<WarningIcon />} variant="contained"> Enviar alerta</Button>
+      <Link to="/notificacions">  <Button className="botoPrinc" color="primary" size="large" startIcon={<HelpIcon />} variant="contained">Notificacions del centr</Button></Link>
+      <Link to="/alerta">  <Button className="botoPrinc" color="primary" size="large" startIcon={<WarningIcon />} variant="contained"> Enviar alerta</Button></Link>
             </Grid>
             <img alt="logoAlcoxide" src={logoAlcoxide} className="logoAlco"/>
             </Grid>

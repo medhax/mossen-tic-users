@@ -1,5 +1,5 @@
 import React from 'react';
-import './Control.css';
+import '../Admin.css';
 import {TextField, Button, ButtonGroup} from '@material-ui/core';
 import logoMossen from '../../../img/logoMossen.png'
 import ReactQr from 'react-awesome-qr'
@@ -29,7 +29,10 @@ class Control extends React.Component{
                 </div>
                 <div className="box-2"><Notis/></div>
             </div>
-            <div className="container-2"><h2>cajatres</h2></div>
+            <div className="container-2">
+              <div className="box-1">
+              <h2>cajatres</h2></div>
+              </div>
         </div>
     )
 }

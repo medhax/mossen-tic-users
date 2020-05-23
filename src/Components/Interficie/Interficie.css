@@ -20,7 +20,7 @@ body{
 }
 
 .root{
-    margin-top:100px !important ;
+    margin-top:80px !important ;
 }
 
 .botoPrinc{
@@ -36,7 +36,7 @@ body{
 
 .logoAlco{
     opacity: 0.6;
-    width: 60%;
+    width: 40%;
 }
 .QrBoxinga{
     flex-grow: 1;

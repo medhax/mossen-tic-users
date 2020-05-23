@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
                 </div>
                </MenuItem>
 
-              <Link to="/login"><IconButton className={classes.icono} aria-label="log out" component="span">
+              <Link to="/"><IconButton className={classes.icono} aria-label="log out" component="span">
               <ExitToAppIcon />
             </IconButton></Link>
             </Toolbar>

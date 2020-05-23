@@ -13,3 +13,68 @@
 .rootStats{
     height: 100%;
 }
+
+
+/*Stats+Control*/
+.container-1 div, .container-2 div{
+   
+    margin :5px;
+    padding: 4px;
+    background-color: white;
+    
+}
+.container-1 , .container-2 {
+    display: flex;
+    margin: 7px;
+}
+
+.box-1{
+    flex: 1;
+    border: solid black 1px !important;
+
+}
+.box-2{
+    flex: 1;
+    border: solid black 1px !important;
+
+}
+
+.botons{
+    display: flex;
+    margin: 5px;
+}
+.exportar{
+    align-self: flex-end;
+    margin: 20px !important;
+}
+
+.titols{
+    display: flex;
+    flex-direction: column;
+    flex: 2 ;
+}
+.notificacions{
+    display:flex ;
+}
+
+.botonsNotis{
+    display: flex;
+    padding: 5px;
+}
+
+.botonsNotis{
+    align-self:center ;
+}
+.importarImg{
+    max-width: 40%;
+}
+
+.NumAlumn{
+    text-shadow: 10px 10px 5px lightcoral;
+    color:pink;  
+    font-size: 70px !important;
+    font-weight: 800 !important;
+    font-family: Raleway;
+    margin: 5px;
+    align-self: center;
+}
