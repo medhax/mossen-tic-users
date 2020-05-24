@@ -30,12 +30,10 @@ body{
 
 .botoPrinc{
     height: 5vh;
-    width: 60vw;
+    width: 65vw;
     border-radius: 20px !important;
     margin:10px !important;
     position: relative;
-    
-
 }
 
 
@@ -49,4 +47,8 @@ body{
     background-color: white;
     border-radius: 25px;
     text-shadow: 1px 2px 2px grey;
+}
+
+.textarea{
+    width: 95%;
 }

@@ -4,7 +4,7 @@ import './efectes.scss'
 import WarningIcon from '@material-ui/icons/Warning';
 import HelpIcon from '@material-ui/icons/Help';
 import NavBar from '../NavBar/NavBar';
-import {Button,Grid} from '@material-ui/core';
+import {Button,Grid, DialogActions,Dialog,DialogContent,TextareaAutosize,DialogTitle} from '@material-ui/core';
 import ReactQr from 'react-awesome-qr'
 import logoMossen from '../../img/logoMossen.png'
 import logoAlcoxide from '../../img/alcoxide.png'
@@ -18,12 +18,15 @@ class Interficie extends React.Component{
   this.state = {
     objQR: this.props.location.state.usuari,
     avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
-    darreraTemp: '---'
+    darreraTemp: '---',
+    open:false,
+    valorAlerta:"",
   }
   }
   componentWillMount(){
     let thus = this;
     console.log(this.state.avui)
+    console.log(this.state.open)
 let emailNet = this.state.objQR.email.replace('@iesmossenalcover.cat', '')
 firebase.database().ref('/temperatures/'+this.state.avui+ '/'+emailNet).on('value', function(snapshot) {
   if (snapshot.val() !== null){
@@ -33,8 +36,16 @@ firebase.database().ref('/temperatures/'+this.state.avui+ '/'+emailNet).on('valu
 });
   }
   render(){
-
-    const correu = 'mecachis';
+    const handleOpen = () => {
+      this.setState({open: !this.state.open});
+      console.log(this.state.open)
+    };
+  const handleSendAlerta = () => {
+      this.setState({open: !this.state.open});
+      console.log(this.state.open)
+    };
+  
+  
         return(
           <div>
             <NavBar usuari={this.props.location.state.usuari} />
@@ -64,8 +75,29 @@ firebase.database().ref('/temperatures/'+this.state.avui+ '/'+emailNet).on('valu
               </Grid>
              
               
-      <Link  style={{color: 'transparent'}} to="/notificacions">  <Button className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Notificacions del centre</Button></Link>
-      <Link style={{color: 'transparent'}} to="/alerta">  <Button className="botoPrinc" color="primary" startIcon={<WarningIcon />} variant="contained"> Enviar alerta</Button></Link>
+              <Link style={{color: 'transparent'}} to="/notificacions"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Notificacions del centre</Button></Link>
+        <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained"> Enviar alerta</Button>
+              <Dialog
+              fullWidth="true"
+              maxWidth={"sm"}
+                open={this.state.open}        
+                keepMounted
+                onClose={handleOpen}
+              >
+                <DialogTitle>{"Enviar una alerta"}</DialogTitle>
+                <DialogContent>
+                  <TextareaAutosize onChange={evt => this.updadeValorAlerta(evt)} value={this.state.valorAlerta} className="textarea"  rowsMin={3} placeholder="Introdueix el missatge que desitjes enviar" />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleOpen} color="primary">
+                    Tancar
+                  </Button>
+                  <Button onClick={handleSendAlerta} color="primary">
+                    Enviar alerta
+                  </Button>
+                </DialogActions>
+              </Dialog>
+     
       <img alt="logoAlcoxide" src={logoAlcoxide} className="logoAlco"/>
             </Grid>
             
@@ -73,6 +105,11 @@ firebase.database().ref('/temperatures/'+this.state.avui+ '/'+emailNet).on('valu
 
             </div>
         )
+    }
+    updadeValorAlerta(evt){
+      this.setState({
+        valorAlerta: evt.target.value
+      });
     }
   }
 

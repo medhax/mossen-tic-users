@@ -21,9 +21,6 @@ export default function Routes() {
           <Route path="/interficie">
             <Interficie />
           </Route>
-          <Route path="/alerta">
-            <Alerta />
-          </Route>
           <Route path="/notificacions">
             <Notificacions />
           </Route>

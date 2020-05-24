@@ -9,18 +9,8 @@ import { exportComponentAsPNG } from "react-component-export-image";
 
 
 class Control extends React.Component{
-    constructor(props){
-        super(props);
-            this.state = {
-                infQr:"",
-                inputValue1:"",
-                inputValue2:"",
-            }
-        
-    }
-    
-    render(){ 
 
+    render(){ 
     return(
         <div className="root">
             <div className="container-1">
