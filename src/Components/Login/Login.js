@@ -1,15 +1,13 @@
 import React from 'react';
 import './Login.scss'
 import FadeIn from 'react-fade-in';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import {Button,Grid,TextField,Dialog,DialogActions,DialogContent,DialogTitle} from '@material-ui/core';
 import logoAlcoxide from '../../img/alcoxide.png'
 import logoMossen from '../../img/logoMossen.png'
 import Animacio from '../Animacio/animacio'
 import {Link, Redirect} from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
-
 
 class Login extends React.Component{
   constructor(props){
@@ -19,11 +17,17 @@ class Login extends React.Component{
 
      },
       redirecting:false,
+      open:false,
     }
+
   }
    
     render(){
-      
+     const handleOpen = () => {
+        this.setState({
+            open : !this.state.open,
+        });
+    }
       const responseGoogleSuccess = (response) => {
        
         this.setState({profileObj: response.profileObj,
@@ -57,7 +61,7 @@ class Login extends React.Component{
   />  
   
   <br/>
-               <Link to="/admin"><Button variant="outlined" className="botoAdmin"  color="secondary">Accedir a la versió d'administrador</Button></Link> 
+               <Button variant="outlined" className="botoAdmin" onClick={handleOpen} color="secondary">Accedir a la versió d'administrador</Button>
               </Grid>
              
               <Grid className="logoAlcoxideBox" item  xs={12}>
@@ -68,6 +72,29 @@ class Login extends React.Component{
             pathname: '/interficie',
             state: {usuari: this.state.profileObj,}
         }}/> : null }
+
+        <Dialog
+              fullWidth="true"
+              maxWidth={"sm"}
+                open={this.state.open}        
+                keepMounted
+                onClose={handleOpen}
+              >
+                <DialogTitle>{"Accedir a la versió d'administrador"}</DialogTitle>
+                <DialogContent>
+                  <TextField variant="outlined" label="Usuari" />
+                  <br/><br/>
+                  <TextField variant="outlined" label="Contrasenya" type="password" />
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={handleOpen} color="secondary">
+                    Tancar
+                  </Button>
+                  <Button  color="primary">
+                    Accedir
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </FadeIn>
         )
     }
