@@ -5,7 +5,7 @@ import { Switch, Route, Router} from 'react-router-dom';
 import history from './history';
 import Admin from '../Components/Admin/Admin'
 import Notificacions from '../Components/Interficie/Notificacions/Notificacions'
-import Alerta from '../Components/Interficie/Alerta/Alerta'
+
 
 export default function Routes() {        
   return (

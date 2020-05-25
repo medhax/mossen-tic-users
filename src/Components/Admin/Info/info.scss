@@ -119,8 +119,7 @@ $col) {
   none,
   #fff);
   cursor: pointer;
-  -webkit-animation: ani2 0.7s steps(70) forwards;
-  animation: ani2 0.7s steps(70) forwards;
+  
 
   &:hover {
    -webkit-animation: ani 0.7s steps(70) forwards;
@@ -162,30 +161,6 @@ $col) {
  to {
   -webkit-mask-position: 100% 0;
   mask-position: 100% 0;
- }
-}
-
-@-webkit-keyframes ani2 {
- from {
-  -webkit-mask-position: 100% 0;
-  mask-position: 100% 0;
- }
-
- to {
-  -webkit-mask-position: 0 0;
-  mask-position: 0 0;
- }
-}
-
-@keyframes ani2 {
- from {
-  -webkit-mask-position: 100% 0;
-  mask-position: 100% 0;
- }
-
- to {
-  -webkit-mask-position: 0 0;
-  mask-position: 0 0;
  }
 }
 
