@@ -1,14 +1,26 @@
 import React from 'react';
-import {Typography} from '@material-ui/core';
-import { Line } from 'react-chartjs-2';
+import { Line,Bar } from 'react-chartjs-2';
 class Stats extends React.Component{
     render(){
-
-        const lineData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        const barData={
+            labels: ['Fa 2 setmanes', 'Fa 1 setmana', 'Fa 3 dies', 'Dispús ahir', 'Ahir', 'Avui'],
             datasets: [
               {
-                label: 'My First dataset',
+                label: 'Temperatura al llarg de la setmana',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+                data: [36.8, 37, 37.1, 37.2, 37.2, 37, 39.9]
+              }
+            ] 
+        }
+        const lineData = {
+            labels: ['10% alumnes', '20% alumnes', '30% alumnes', '40% alumnes', '50% alumnes', '60% alumnes', '70% alumnes', '80% alumnes', '90% alumnes', '100% alumnes'],
+            datasets: [
+              {
+                label: "Temperatura d'avui",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,0.4)',
@@ -26,7 +38,7 @@ class Stats extends React.Component{
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: [36.8, 37, 37, 36.6, 37 ,37.5 ,37, 37.2,37.4,37.4,37.8,37.4,37.5,37,37.1,36.9]
               }
             ]
           
@@ -36,7 +48,7 @@ class Stats extends React.Component{
             <div className="rootStats">
                 <div className="container-1">
                     <div className="box-1">
-                        <Typography>Alumnes que avui han entrat al centre</Typography>
+                        <h2>Alumnes que avui han entrat al centre</h2>
                          <h3 className="NumAlumn">117</h3>
                     </div>
                     <div className="box-1">
@@ -48,7 +60,7 @@ class Stats extends React.Component{
                         <h1><Line data={lineData}/></h1>
                     </div>
                     <div className="box-1">
-                    <h1>2</h1>
+                    <h1><Bar data={barData}/></h1>
                     </div>
                 </div>
             </div>
