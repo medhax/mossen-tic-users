@@ -1,6 +1,7 @@
 import React from 'react';
 import {CssBaseline, Container, Grid} from '@material-ui/core';
 import './info.scss';
+import {Link} from "react-router-dom";
 
 //--Icons--
 
@@ -12,12 +13,12 @@ export default function NavBar() {
        <CssBaseline />
 <Container  className={"contenedor"}  maxWidth="lg">
   <Grid container spacing={3} justify="space-between" alignItems="stretch">
-    <Grid item xs>
+    <Grid item xs><Link to="/taula">
     <div className="button-container-1">
       <span className="mas">1r Eso</span>
     <button id='work' type="button" name="Hover">1r Eso</button>
   </div>
-    </Grid>
+  </Link></Grid>
     <Grid item xs>
     <div className="button-container-1">
       <span className="mas">2n Eso</span>

@@ -5,7 +5,7 @@ import { Switch, Route, Router} from 'react-router-dom';
 import history from './history';
 import Admin from '../Components/Admin/Admin'
 import Notificacions from '../Components/Interficie/Notificacions/Notificacions'
-
+import Taula from '../Components/Admin/Info/Taula'
 
 export default function Routes() {        
   return (
@@ -25,6 +25,9 @@ export default function Routes() {
             <Notificacions />
           </Route>
         </Switch>
+        <Route path="/taula">
+            <Taula />
+          </Route>
         </Router>
 
     </div>
