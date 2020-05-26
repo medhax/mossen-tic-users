@@ -9,6 +9,7 @@ import Stats from './Stats/Stats';
 import Control from './Control/Control'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
+import * as fire from 'firebase';
 
 export default function Admin(){
     const [screen, setScreen] = React.useState(0);
@@ -27,6 +28,9 @@ function canviaScreen() {
   }
 }
 
+function sortir(){
+  fire.auth().signOut()
+}
 
   return (
       <div>
@@ -40,8 +44,8 @@ function canviaScreen() {
       <BottomNavigationAction label="Informació" icon={<InfoIcon />} />
       <BottomNavigationAction label="Estadística" icon={<EqualizerIcon />} />
       <BottomNavigationAction label="Control" icon={<AppsIcon />} />
-     <Link to="/"><IconButton color="secondary"  component="span">
-          <ExitToAppIcon />
+     <Link to="/"><IconButton color="secondary"  component="span" style={{float: 'right', alignSelf: 'flex-end'}} onClick={()=> sortir()}>
+          <ExitToAppIcon /> 
         </IconButton></Link>
     </BottomNavigation>
     </div>

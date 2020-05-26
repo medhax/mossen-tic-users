@@ -3,6 +3,9 @@
     position:fixed;
     bottom: 0px;
     left: 0%;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
 }
 .modul1{
     border: solid 2px black;
@@ -31,6 +34,12 @@
 .box-1{
     flex: 1;
     border: solid black 1px !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    justify-items: center;
+    width: 50vw;
 
 }
 .box-2{
@@ -70,11 +79,11 @@
 }
 
 .NumAlumn{
-    text-shadow: 10px 10px 5px lightcoral;
-    color:pink;  
+    text-shadow: 10px 10px 5px grey;
+    color:black;  
     font-size: 70px !important;
     font-weight: 800 !important;
-    font-family: Raleway;
+    font-family: Roboto;
     margin: 5px;
     align-self: center;
 }

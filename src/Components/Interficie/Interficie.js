@@ -18,7 +18,7 @@ class Interficie extends React.Component{
   this.state = {
     objQR: this.props.location.state.usuari,
     avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
-    darreraTemp: '---',
+    darreraTemp: '--',
     open:false,
     valorAlerta:"",
   }
@@ -28,7 +28,7 @@ class Interficie extends React.Component{
     console.log(this.state.avui)
     console.log(this.state.open)
 let emailNet = this.state.objQR.email.replace('@iesmossenalcover.cat', '')
-firebase.database().ref('/temperatures/'+this.state.avui+ '/'+emailNet).on('value', function(snapshot) {
+firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
   if (snapshot.val() !== null){
     thus.setState({darreraTemp: snapshot.val().darreraTemp})
   }
