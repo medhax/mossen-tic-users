@@ -41,6 +41,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
       console.log(this.state.open)
     };
   const handleSendAlerta = () => {
+    firebase.database().ref('alertes/').push({missatgeAlerta: this.state.valorAlerta, timestamp: new Date().toLocaleString(),nomUsuari: this.state.objQR.name, email: this.state.objQR.email })
       this.setState({open: !this.state.open});
       console.log(this.state.open)
     };
@@ -76,7 +77,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
              
               
               <Link style={{color: 'transparent'}} to="/notificacions"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Notificacions del centre</Button></Link>
-        <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained"> Enviar alerta</Button>
+        <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained" > Enviar alerta</Button>
               <Dialog
               fullWidth="true"
               maxWidth={"sm"}
@@ -86,7 +87,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
               >
                 <DialogTitle>{"Enviar una alerta"}</DialogTitle>
                 <DialogContent>
-                  <TextareaAutosize onChange={evt => this.updadeValorAlerta(evt)} value={this.state.valorAlerta} className="textarea"  rowsMin={3} placeholder="Introdueix el missatge que desitjes enviar" />
+                  <TextareaAutosize onChange={evt => this.updadeValorAlerta(evt)} value={this.state.valorAlerta} className="textarea"  rowsMin={3} placeholder="Introdueix el missatge que desitges enviar" />
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleOpen} color="primary">

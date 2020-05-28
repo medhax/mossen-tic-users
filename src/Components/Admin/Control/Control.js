@@ -6,10 +6,25 @@ import ReactQr from 'react-awesome-qr'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageUploader from 'react-images-upload';
 import { exportComponentAsPNG } from "react-component-export-image";
-
+import MaterialTable from 'material-table'
+import * as fire from 'firebase'
 
 class Control extends React.Component{
-
+constructor(props){
+  super(props);
+  this.state = {
+    llistaAlertes: [],
+    avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
+  }
+  this.componentDidMount = this.componentDidMount.bind(this);
+}
+componentDidMount(){
+  let thus = this;
+  fire.database().ref('alertes/' ).on('value', function(snapshot) {
+    thus.setState({llistaAlertes: Object.values(snapshot.val())})
+   
+ }); 
+}
     render(){ 
     return(
         <div className="root">
@@ -21,7 +36,22 @@ class Control extends React.Component{
             </div>
             <div className="container-2">
               <div className="box-1">
-              <h2>cajatres</h2></div>
+              <div style={{ maxWidth: '100%' }}>
+              <MaterialTable 
+      title="Alertes del centre"
+      columns={[
+        { title: 'Nom de l"emisor', field: 'nomUsuari' },
+        { title: 'Correu electrònic', field: 'email' },
+        { title: 'Missatge enviat', field: 'missatgeAlerta' },
+        {title: 'Data i hora', field: 'timestamp'},
+        
+      ]}
+      data={this.state.llistaAlertes}        
+      options={{
+        exportButton: true
+      }}
+    />
+      </div></div>
               </div>
         </div>
     )

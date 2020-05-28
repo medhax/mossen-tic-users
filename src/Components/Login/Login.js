@@ -10,6 +10,7 @@ import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
 import * as fire from 'firebase';
 
+
 class Login extends React.Component{
   constructor(props){
     super(props);
@@ -57,7 +58,7 @@ if (user) {
         });
     }
       const responseGoogleSuccess = (response) => {
-       
+       console.log(response)
         this.setState({profileObj: response.profileObj,
                     redirecting:true
         });
@@ -82,7 +83,7 @@ if (user) {
              <GoogleLogin
               className="botoGoogle"
     clientId="1043027828905-d9ggaps55ucafvqv73volb6ks206r1bj.apps.googleusercontent.com"
-    buttonText="Iniciar sessió amb google"
+    buttonText="Iniciar sessió amb Google"
     onSuccess={responseGoogleSuccess}
     onFailure={responseGoogleFailure}
     cookiePolicy={'single_host_origin'}

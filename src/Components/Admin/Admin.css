@@ -6,6 +6,7 @@
     flex: 1;
     flex-direction: row;
     align-items: center;
+    
 }
 .modul1{
     border: solid 2px black;
@@ -30,7 +31,9 @@
     display: flex;
     margin: 7px;
 }
-
+.container-2 {
+    margin-bottom: 200px;
+}
 .box-1{
     flex: 1;
     border: solid black 1px !important;
