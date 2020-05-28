@@ -1,98 +1,78 @@
-import React from 'react';
-import {
-    useTable,
-    useGroupBy,
-    useFilters,
-    useSortBy,
-    useExpanded,
-    usePagination,
-  } from 'react-table'
+import React from 'react'
+import { forwardRef } from 'react';
+import MaterialTable from 'material-table'
+import FilterList from '@material-ui/icons/FilterList';
+import {AddBox,FirstPage,LastPage,Remove,SaveAlt,ViewColumn,Search,Edit,DeleteOutline,ArrowDownward,Check,ChevronLeft,ChevronRight,Clear} from "@material-ui/icons";
 
-export default function Taula() {
-    const data = React.useMemo(
-      () => [
+
+const tableIcons = {
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
+  Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
+  Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
+  SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
+  ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
+};
+
+
+
+class Taula extends React.Component{
+   constructor(props){
+     super(props);
+     this.state={
+       titol: this.props.location.state.titol
+     }
+   }
+   render(){
+  return (
+    <MaterialTable
+    icons={tableIcons}
+      title={this.state.titol}
+      columns={[
         {
-          col1: 'Hello',
-          col2: 'World',
+          title: 'Avatar',
+          field: 'avatar',
+          render: rowData => (
+            <img
+              style={{ height: 36, borderRadius: '50%' }}
+              src={rowData.avatar}
+            />
+          ),
         },
-        {
-          col1: 'react-table',
-          col2: 'rocks',
-        },
-        {
-          col1: 'whatever',
-          col2: 'you want',
-        },
-      ],
-      []
-    )
-  
-    const columns = React.useMemo(
-      () => [
-        {
-          Header: 'Column 1',
-          accessor: 'col1', // accessor is the "key" in the data
-        },
-        {
-          Header: 'Column 2',
-          accessor: 'col2',
-        },
-      ],
-      []
-    )
-  
-    const {
-      getTableProps,
-      getTableBodyProps,
-      headerGroups,
-      rows,
-      prepareRow,
-    } = useTable({ columns, data })
-  
-    return (
-      <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th
-                  {...column.getHeaderProps()}
-                  style={{
-                    borderBottom: 'solid 3px red',
-                    background: 'aliceblue',
-                    color: 'black',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {column.render('Header')}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
-            prepareRow(row)
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        padding: '10px',
-                        border: 'solid 1px gray',
-                        background: 'papayawhip',
-                      }}
-                    >
-                      {cell.render('Cell')}
-                    </td>
-                  )
-                })}
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    )
-  }
+        { title: 'Id', field: 'id' },
+        { title: 'First Name', field: 'first_name' },
+        { title: 'Last Name', field: 'last_name' },
+      ]}
+      data={query =>
+        new Promise((resolve, reject) => {
+          let url = 'https://reqres.in/api/users?'
+          url += 'per_page=' + query.pageSize
+          url += '&page=' + (query.page + 1)
+          fetch(url)
+            .then(response => response.json())
+            .then(result => {
+              resolve({
+                data: result.data,
+                page: result.page - 1,
+                totalCount: result.total,
+              })
+            })
+        })
+      }
+    />
+  )
+}
+}
+
+export default Taula;

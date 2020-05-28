@@ -24,10 +24,11 @@ export default function Routes() {
           <Route path="/notificacions">
             <Notificacions />
           </Route>
-        </Switch>
-        <Route path="/taula">
+          <Route path="/taula">
             <Taula />
           </Route>
+        </Switch>
+       
         </Router>
 
     </div>

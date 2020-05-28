@@ -27,7 +27,7 @@ componentDidMount(){
 }
     render(){ 
     return(
-        <div className="root">
+        <div>
             <div className="container-1">
                 <div className="box-1">
                     <GenQr/>

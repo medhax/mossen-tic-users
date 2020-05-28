@@ -1,10 +1,14 @@
 import React from 'react';
 import FadeIn from 'react-fade-in';
+import CardNoti from './CardNoti'
 class Notificacions extends React.Component{
     render(){
         return(
             <FadeIn>
-<h2>notis</h2>
+<CardNoti/>
+<CardNoti/>
+<CardNoti/>
+<CardNoti/>
 
             </FadeIn>
         ) 

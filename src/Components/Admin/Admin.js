@@ -35,10 +35,10 @@ function sortir(){
   return (
       <div>
           {canviaScreen()}
-    <BottomNavigation value={screen} className="bottomNav" onChange={(event, newScreen) => {
+    <BottomNavigation value={screen} showLabels className="bottomNav" onChange={(event, newScreen) => {
         setScreen(newScreen);
       }}
-      showLabels
+      
       
     >
       <BottomNavigationAction label="Informació" icon={<InfoIcon />} />

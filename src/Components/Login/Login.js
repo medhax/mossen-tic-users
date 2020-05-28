@@ -96,7 +96,7 @@ if (user) {
               <Grid className="logoAlcoxideBox" item  xs={12}>
                 <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
-            </Grid>
+            </Grid> 
             {this.state.redirecting ? <Redirect to={{
             pathname: '/interficie',
             state: {usuari: this.state.profileObj,}
