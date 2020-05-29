@@ -11,6 +11,7 @@ import logoAlcoxide from '../../img/alcoxide.png'
 import {Link} from "react-router-dom";
 import { withRouter } from "react-router";
 import firebase from 'firebase';
+import Axios from 'axios';
 
 class Interficie extends React.Component{
   constructor(props){
@@ -21,7 +22,9 @@ class Interficie extends React.Component{
     darreraTemp: '--',
     open:false,
     valorAlerta:"",
+    organitzacioUsuari: 'Carregant...'
   }
+  this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentWillMount(){
     let thus = this;
@@ -35,7 +38,32 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
  
 });
   }
-  render(){
+  componentDidMount(){
+  
+    let thus = this;
+    Axios.post('https://api.alcoxide.dev/login', {
+      username: 'mosseninsider',
+      password: 'Moss3n_Ins1d3r_*2020'
+    })
+    .then(function (response) {
+      let config = {
+        headers: {
+          'Authorization': 'Bearer ' + response.data.accessToken
+        }
+      }
+      Axios.get("https://api.alcoxide.dev/mosseninsider/"+thus.state.objQR.email, config)
+    .then(function (response) {
+      thus.setState({organitzacioUsuari: response.data.organitzacioUsuari.replace('/', '').toUpperCase()})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }  render(){
     const handleOpen = () => {
       this.setState({open: !this.state.open});
       console.log(this.state.open)
@@ -49,7 +77,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
   
         return(
           <div>
-            <NavBar usuari={this.props.location.state.usuari} />
+            <NavBar usuari={this.props.location.state.usuari} grupOrg={this.state.organitzacioUsuari} />
           
             <Grid container className="root" alignItems="center" direction="column" justify="center">
             
@@ -72,6 +100,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
               
               <Grid className="temperatura" item>
                 <h2 className="NumTempe">{this.state.darreraTemp}º</h2>
+                
                 <Button variant="contained" className="botTemp"  color="secondary">Registre de temperatures</Button>
               </Grid>
              

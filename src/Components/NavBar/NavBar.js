@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
                 <Typography >{props.usuari.name}</Typography>
                 <span></span>
                 <Typography >{props.usuari.email}</Typography>
+                <span></span>
+                <Typography >{props.grupOrg}</Typography>
                 </div>
                </MenuItem>
 
