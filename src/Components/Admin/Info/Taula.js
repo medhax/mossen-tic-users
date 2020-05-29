@@ -1,5 +1,6 @@
 import React from 'react'
 import { forwardRef } from 'react';
+import {withRouter} from 'react-router-dom'
 import MaterialTable from 'material-table'
 import FilterList from '@material-ui/icons/FilterList';
 import {AddBox,FirstPage,LastPage,Remove,SaveAlt,ViewColumn,Search,Edit,DeleteOutline,ArrowDownward,Check,ChevronLeft,ChevronRight,Clear} from "@material-ui/icons";
@@ -31,8 +32,9 @@ class Taula extends React.Component{
    constructor(props){
      super(props);
      this.state={
-       titol: this.props.location.state.titol
+       titol: props.location.state.titol
      }
+     console.log(props);
    }
    render(){
   return (
@@ -44,7 +46,7 @@ class Taula extends React.Component{
           title: 'Avatar',
           field: 'avatar',
           render: rowData => (
-            <img
+            <img alt="Avatar dels usuaris"
               style={{ height: 36, borderRadius: '50%' }}
               src={rowData.avatar}
             />
@@ -75,4 +77,4 @@ class Taula extends React.Component{
 }
 }
 
-export default Taula;
+export default withRouter(Taula);

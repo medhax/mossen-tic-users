@@ -12,12 +12,12 @@ class Info extends React.Component{
     super(props);
     this.state={
       redirecting:false,
-      titol:{},
+      titol:'',
     }
 
   }
   render(){
-    const titol = this.state.titol;
+   
      const handle1ES = ()=> {
       this.setState({
         titol:"1r d'ESO",
@@ -133,7 +133,7 @@ class Info extends React.Component{
   </Container>
   {this.state.redirecting ? <Redirect to={{
             pathname: '/taula',
-            state: { titol: titol }
+            state: { titol: this.state.titol }
         }}/> : null }
 </div>  
   );
