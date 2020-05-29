@@ -43,7 +43,7 @@ class Taula extends React.Component{
       title={this.state.titol}
       columns={[
         {
-          title: 'Avatar',
+          title: 'Foto',
           field: 'avatar',
           render: rowData => (
             <img alt="Avatar dels usuaris"
@@ -52,9 +52,9 @@ class Taula extends React.Component{
             />
           ),
         },
-        { title: 'Id', field: 'id' },
-        { title: 'First Name', field: 'first_name' },
-        { title: 'Last Name', field: 'last_name' },
+        { title: 'Nom', field: 'id' },
+        { title: 'Darrera temperatura', field: 'first_name' },
+        { title: 'Darrer cop al centre', field: 'last_name' },
       ]}
       data={query =>
         new Promise((resolve, reject) => {

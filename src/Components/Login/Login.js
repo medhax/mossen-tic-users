@@ -5,7 +5,7 @@ import {Button,Grid,TextField,Dialog,DialogActions,DialogContent,DialogTitle} fr
 import logoAlcoxide from '../../img/alcoxide.png'
 import logoMossen from '../../img/logoMossen.png'
 import Animacio from '../Animacio/animacio'
-import { Redirect} from "react-router-dom";
+import { Link,Redirect} from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
 import * as fire from 'firebase';
@@ -81,7 +81,7 @@ if (user) {
               
               <Grid className="botonets" item>
              <GoogleLogin
-              className="botoGoogle"
+              className="botonets"
     clientId="1043027828905-d9ggaps55ucafvqv73volb6ks206r1bj.apps.googleusercontent.com"
     buttonText="Iniciar sessió amb Google"
     onSuccess={responseGoogleSuccess}
@@ -90,7 +90,9 @@ if (user) {
   />  
   
   <br/>
-               <Button variant="outlined" className="botoAdmin" onClick={handleOpen} color="secondary">Accedir a la versió d'administrador</Button>
+               <Button variant="outlined" className="botonets" onClick={handleOpen} color="secondary">Versió d'administrador</Button>
+              <br/><br/>
+              <Link to="/info"> <Button variant="outlined" className="botonets" color="primary">Estadística global</Button></Link>
               </Grid>
              
               <Grid className="logoAlcoxideBox" item  xs={12}>

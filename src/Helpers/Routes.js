@@ -6,7 +6,7 @@ import history from './history';
 import Admin from '../Components/Admin/Admin'
 import Notificacions from '../Components/Interficie/Notificacions/Notificacions'
 import Taula from '../Components/Admin/Info/Taula'
-
+import WorldInfo from '../Components/WorldInfo/WorldInfo'
 export default function Routes() {        
   return (
     <div className="App">
@@ -26,6 +26,9 @@ export default function Routes() {
           </Route>
           <Route path="/taula">
             <Taula />
+          </Route>
+          <Route path="/info">
+            <WorldInfo />
           </Route>
         </Switch>
        
