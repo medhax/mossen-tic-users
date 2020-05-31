@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  txtNav:{
+    fontSize: '12px',
+  }
 
 }));
     
@@ -29,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
             <Avatar className={classes.menuButton}  src={props.usuari.imageUrl}/>
               <MenuItem className={classes.title}> 
                 <div>
-                <Typography >{props.usuari.name}</Typography>
+                <Typography  className={classes.txtNav} >{props.usuari.name}</Typography>
                 <span></span>
-                <Typography >{props.usuari.email}</Typography>
+                <Typography className={classes.txtNav} >{props.usuari.email}</Typography>
                 <span></span>
-                <Typography >{props.grupOrg}</Typography>
+                <Typography className={classes.txtNav} >{props.grupOrg}</Typography>
                 </div>
                </MenuItem>
 

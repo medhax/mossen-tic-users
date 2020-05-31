@@ -88,14 +88,14 @@ if (user) {
     onFailure={responseGoogleFailure}
     cookiePolicy={'single_host_origin'}
   />  
-  
+   
   <br/>
                <Button variant="outlined" className="botonets" onClick={handleOpen} color="secondary">Versió d'administrador</Button>
               <br/><br/>
               <Link to="/info"> <Button variant="outlined" className="botonets" color="primary">Estadística global</Button></Link>
               </Grid>
              
-              <Grid className="logoAlcoxideBox" item  xs={12}>
+              <Grid item  xs={12}>
                 <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid> 
