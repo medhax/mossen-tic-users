@@ -43,6 +43,32 @@ class Info extends React.Component{
       });
     }
 
+    const handle1Ba = ()=> {
+      this.setState({
+        titol:"1r de Batxiller",
+        redirecting:true,
+      });
+    }
+    const handle2Ba = ()=> {
+      this.setState({
+        titol:"2n de Batxiller",
+        redirecting:true,
+      });
+    }
+    const handleFP = ()=> {
+      this.setState({
+        titol:"FP",
+        redirecting:true,
+      });
+    }
+    const handlePerso = ()=> {
+      this.setState({
+        titol:"Personal",
+        redirecting:true,
+      });
+    }
+
+
 
   return (
    <div >
@@ -87,13 +113,13 @@ class Info extends React.Component{
   <Grid item xs>
   <div className="button-container-1">
       <span className="mas">1r Batx</span>
-    <button id='work' type="button" name="Hover">1r Batx</button>
+    <button onClick={handle1Ba} id='work' type="button" name="Hover">1r Batx</button>
   </div>
     </Grid>
     <Grid item xs>
     <div className="button-container-1">
       <span className="mas">2n Batx</span>
-    <button id='work' type="button" name="Hover">2n Batx</button>
+    <button onClick={handle2Ba} id='work' type="button" name="Hover">2n Batx</button>
   </div>
     </Grid>
     </Grid>
@@ -103,13 +129,13 @@ class Info extends React.Component{
   <Grid item xs>
   <div className="button-container-1">
       <span className="mas">FP</span>
-    <button id='work' type="button" name="Hover">FP</button>
+    <button onClick={handleFP} id='work' type="button" name="Hover">FP</button>
   </div>
     </Grid>
     <Grid item xs>
     <div className="button-container-1">
       <span className="mas">FP</span>
-    <button id='work' type="button" name="Hover">FP</button>
+    <button onClick={handleFP} id='work' type="button" name="Hover">FP</button>
   </div>
     </Grid>
     </Grid>
@@ -120,13 +146,13 @@ class Info extends React.Component{
   <Grid item xs>
   <div className="button-container-1">
       <span className="mas">FP</span>
-    <button id='work' type="button" name="Hover">FP</button>
+    <button onClick={handleFP} id='work' type="button" name="Hover">FP</button>
   </div>
     </Grid>
     <Grid item xs>
     <div className="button-container-1">
       <span className="mas">Personal</span>
-    <button id='work' type="button" name="Hover">Personal</button>
+    <button onClick={handlePerso} id='work' type="button" name="Hover">Personal</button>
   </div>
     </Grid>
     </Grid>

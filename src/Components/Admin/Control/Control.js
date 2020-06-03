@@ -56,7 +56,7 @@ componentDidMount(){
         </div>
     )
 }
-}
+} 
 
 export default Control
 

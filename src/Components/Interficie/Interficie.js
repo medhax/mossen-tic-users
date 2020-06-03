@@ -108,7 +108,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
               <Link style={{color: 'transparent'}} to="/notificacions"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Notificacions del centre</Button></Link>
         <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained" > Enviar alerta</Button>
               <Dialog
-              fullWidth="true"
+              fullWidth
               maxWidth={"sm"}
                 open={this.state.open}        
                 keepMounted

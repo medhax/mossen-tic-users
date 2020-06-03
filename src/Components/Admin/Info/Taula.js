@@ -4,7 +4,9 @@ import {withRouter} from 'react-router-dom'
 import MaterialTable from 'material-table'
 import FilterList from '@material-ui/icons/FilterList';
 import {AddBox,FirstPage,LastPage,Remove,SaveAlt,ViewColumn,Search,Edit,DeleteOutline,ArrowDownward,Check,ChevronLeft,ChevronRight,Clear} from "@material-ui/icons";
-
+import {Link} from "react-router-dom";
+import { IconButton } from '@material-ui/core';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -38,6 +40,7 @@ class Taula extends React.Component{
    }
    render(){
   return (
+    <div>
     <MaterialTable
     icons={tableIcons}
       title={this.state.titol}
@@ -73,6 +76,10 @@ class Taula extends React.Component{
         })
       }
     />
+    <Link to="/admin"> <IconButton color="secondary" aria-label="delete">
+    <ExitToAppIcon />
+  </IconButton></Link>
+  </div>
   )
 }
 }
