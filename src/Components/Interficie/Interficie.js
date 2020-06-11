@@ -17,7 +17,7 @@ class Interficie extends React.Component{
   constructor(props){
     super(props);
   this.state = {
-    objQR: this.props.location.state.usuari,
+    objQR: JSON.parse(localStorage.getItem("profileObj")),
     avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
     darreraTemp: '--',
     open:false,
@@ -27,6 +27,7 @@ class Interficie extends React.Component{
   this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentWillMount(){
+    console.log(JSON.parse(localStorage.getItem("profileObj")))
     let thus = this;
     console.log(this.state.avui)
     console.log(this.state.open)
@@ -63,7 +64,8 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
       console.log(error);
     });
 
-  }  render(){
+  }  
+  render(){
     const handleOpen = () => {
       this.setState({open: !this.state.open});
       console.log(this.state.open)
@@ -77,7 +79,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
   
         return(
           <div>
-            <NavBar usuari={this.props.location.state.usuari} grupOrg={this.state.organitzacioUsuari} />
+            <NavBar usuari={this.state.objQR} grupOrg={this.state.organitzacioUsuari} />
           
             <Grid container className="root" alignItems="center" direction="column" justify="center">
             

@@ -55,9 +55,9 @@ class Taula extends React.Component{
             />
           ),
         },
-        { title: 'Nom', field: 'id' },
-        { title: 'Darrera temperatura', field: 'first_name' },
-        { title: 'Darrer cop al centre', field: 'last_name' },
+        { title: 'Nom', field: 'nom' },
+        { title: 'Darrera temperatura', field: 'darrera_temp' },
+        { title: 'Darrer cop al centre', field: 'darrera_entrada' },
       ]}
       data={query =>
         new Promise((resolve, reject) => {

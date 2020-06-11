@@ -10,14 +10,15 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    marginBottom: 20,
+    marginTop: 60
   },
   media: {
     height: 140,
   },
 });
 
-export default function CardNoti() {
+export default function CardNoti(props) {
   const classes = useStyles();
 
   return (
@@ -30,10 +31,10 @@ export default function CardNoti() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Notificacio
+            {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lorem ipsum
+            {props.body}
           </Typography>
         </CardContent>
       </CardActionArea>

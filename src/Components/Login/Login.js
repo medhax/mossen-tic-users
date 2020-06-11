@@ -58,11 +58,12 @@ if (user) {
         });
     }
       const responseGoogleSuccess = (response) => {
-       console.log(response)
+        localStorage.setItem('profileObj', JSON.stringify(response.profileObj)); 
+        console.log(JSON.stringify(response.profileObj))
         this.setState({profileObj: response.profileObj,
                     redirecting:true
         });
-        
+        localStorage.setItem('profileObj', JSON.stringify(response.profileObj))
         }
       const responseGoogleFailure = (response) => {
         alert("Algo falla!" + JSON.stringify(response));
@@ -92,16 +93,16 @@ if (user) {
   <br/>
                <Button variant="outlined" className="botonets" onClick={handleOpen} color="secondary">Versió d'administrador</Button>
               <br/><br/>
-              <Link to="/info"> <Button variant="outlined" className="botonets" color="primary">Estadística global</Button></Link>
+              <Link  style={{color: 'transparent'}} to="/info"> <Button variant="outlined" className="botonets" color="primary">Estadística global</Button></Link>
               </Grid>
              
-              <Grid item  xs={12}>
+              <Grid item  xs={12} style={{bottom: 10}}>
                 <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid> 
             {this.state.redirecting ? <Redirect to={{
             pathname: '/interficie',
-            state: {usuari: this.state.profileObj,}
+           
         }}/> : null }
          {this.state.admin ? <Redirect to={{
             pathname: '/admin',
@@ -109,7 +110,7 @@ if (user) {
         }}/> : null }
 
         <Dialog
-              fullWidth="true"
+              fullWidth
               maxWidth={"sm"}
                 open={this.state.open}        
                 keepMounted
