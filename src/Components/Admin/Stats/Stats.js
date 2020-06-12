@@ -27,17 +27,24 @@ class Stats extends React.Component{
         return Math.floor(Math.random() * (max - min) ) + min;
       }
     actualitzaTemperatures(persona){
-        let  nomPersones = [];
-        let tempPersones = [];
-    var dataset = Object.values(persona);
-    for (const usuari of dataset) {  
-     
-        nomPersones.push(usuari.nomUsuari)
-        tempPersones.push(usuari.tempAvui)
        
-    }
-    this.setState({labelsTempAvui: nomPersones, dataTempAvui: tempPersones})
-    this.forceUpdate()
+        if (persona){
+            let  nomPersones = [];
+            let tempPersones = [];
+            var dataset = Object.values(persona);
+            for (const usuari of dataset) {  
+             
+                nomPersones.push(usuari.nomUsuari)
+                tempPersones.push(usuari.tempAvui)
+               
+            }
+            this.setState({labelsTempAvui: nomPersones, dataTempAvui: tempPersones})
+            this.forceUpdate()
+        } else {
+            this.forceUpdate()
+        }
+   
+
     
     }
     render(){

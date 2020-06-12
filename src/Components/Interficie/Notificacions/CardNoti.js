@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     marginBottom: 20,
-    marginTop: 60
+    marginTop: 80
   },
   media: {
     height: 140,
@@ -24,10 +24,11 @@ export default function CardNoti(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
+        <CardMedia 
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          component="img"
+          image={props.imgUrl}
+          title="Imatge de la notificació"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

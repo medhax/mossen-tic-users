@@ -9,13 +9,13 @@ class Notificacions extends React.Component{
     constructor(props){
         super(props);
         this.state= {
-            notificacions: null
+            notificacions: []
         }
         this.componentDidMount = this.componentDidMount.bind(this);
     }
     componentDidMount(){
         let thus = this;
-        var llistatNotis = firebase.database().ref('notificacions/');
+        var llistatNotis = firebase.database().ref('notificacions/').limitToLast(2);
         llistatNotis.on('value', function(snapshot) {
             if (snapshot) {
                 thus.setState({notificacions: Object.values(snapshot.val())})
@@ -38,7 +38,10 @@ class Notificacions extends React.Component{
              <NavBar/> 
              <Container style={{flex:1, justifyContent: "center", alignItems:"center"}} maxWidth="sm">
             
-                <CardNoti title={"això és un títol"}/>
+            {this.state.notificacions.map((notif)=>
+                <CardNoti title={notif.title} body={notif.body} imgUrl={notif.imgUrl}/>
+            )}
+                
 
                 </Container>
 

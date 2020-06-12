@@ -17,9 +17,7 @@ class Login extends React.Component{
     this.state = {
       usernameAdmin: '',
       passwordAdmin: '',
-     profileObj: {
-
-     },
+      profileObj: {},
       redirecting:false,
       open:false,
       admin: false

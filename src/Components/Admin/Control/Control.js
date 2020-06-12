@@ -32,7 +32,7 @@ componentDidMount(){
                 <div className="box-1">
                     <GenQr/>
                 </div>
-                <div className="box-2"><Notis/></div>
+                <div className="box-2">< Notis/></div>
             </div>
             <div className="container-2">
               <div className="box-1">
@@ -70,15 +70,25 @@ class Notis extends React.Component{
         text:"",
         imgUrl:"",
       }
+      this.penjarNotif = this.penjarNotif.bind(this);
+      this.onChange = this.onChange.bind(this);
+
+    }
+    penjarNotif(e){
+      e.preventDefault()
+      fire.database().ref('notificacions/').push({title: this.state.titol, body: this.state.text, imgUrl: this.state.imgUrl})
+    }
+    onChange(e){
+      this.setState({[e.target.name]: e.target.value})
     }
       render(){
         return(
           <div>
           <div className="notificacions">
             <div className="titols">
-               <TextField label="Titol" size="small" variant="outlined" />
-               <TextField label="Subtitol" size="small" variant="outlined" />
-               <TextareaAutosize rowsMin="3" placeholder="Introduir la notificació" />               
+               <TextField label="Titol" size="small" variant="outlined" name="titol" value={this.state.titol} onChange={this.onChange} />
+          
+               <TextareaAutosize rowsMin="3" placeholder="Introduir el cos de la notificació" name="text" value={this.state.text} onChange={this.onChange}/>               
             </div>
             <div className="importarImg">
             <ImageUploader
@@ -91,8 +101,9 @@ class Notis extends React.Component{
             />
             </div>
           </div>
-            <ButtonGroup className="botonsNotis" size="small" disableElevation variant="text" color="primary">
-            <Button>Penjar notificació</Button>
+            <ButtonGroup className="botons
+            " size="small" disableElevation variant="text" color="primary">
+            <Button onClick={this.penjarNotif}>Penjar notificació</Button>
             <Button color="secondary">Eliminar notificacions</Button>
         </ButtonGroup>
         </div>

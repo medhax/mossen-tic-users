@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
             
 
               <Link style={{color: 'transparent'}} to="/interficie"><IconButton className={classes.icono} aria-label="log out" component="span">
-            <Typography>Tornar</Typography>  <ArrowBackIcon />
+            
+              <ArrowBackIcon /><Typography> Tornar al menu principal </Typography>  
             </IconButton></Link>
             </Toolbar>
           </AppBar>

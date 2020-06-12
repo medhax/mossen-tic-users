@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {IconButton,BottomNavigationAction, BottomNavigation} from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import AppsIcon from '@material-ui/icons/Apps';
@@ -12,7 +12,19 @@ import {Link} from "react-router-dom";
 import * as fire from 'firebase';
 
 export default function Admin(){
-    const [screen, setScreen] = React.useState(0);
+  const [screen, setScreen] = React.useState(0);
+  const [admin, setAdmin] = React.useState(false);
+   useEffect(() => {    
+    fire.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        setAdmin(true)
+      }else {
+        setAdmin(false)
+      }
+          });
+  
+    });
+    
 function canviaScreen() {
   switch(screen){
       default:return(
