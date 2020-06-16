@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
                 </div>
                </MenuItem>
 
-              <Link style={{color: 'transparent'}} to="/"><IconButton className={classes.icono} aria-label="log out" component="span">
+              <Link style={{color: 'transparent'}} to="/" onClick={()=>localStorage.removeItem('profileObj')}><IconButton className={classes.icono} aria-label="log out" component="span">
             <Typography>Sortir</Typography>  <ExitToAppIcon />
             </IconButton></Link>
             </Toolbar>

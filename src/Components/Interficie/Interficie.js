@@ -9,7 +9,7 @@ import ReactQr from 'react-awesome-qr'
 import logoMossen from '../../img/logoMossen.png'
 import logoAlcoxide from '../../img/alcoxide.png'
 import {Link} from "react-router-dom";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 import firebase from 'firebase';
 import Axios from 'axios';
 
@@ -22,6 +22,8 @@ class Interficie extends React.Component{
     darreraTemp: '--',
     open:false,
     valorAlerta:"",
+     loggedIn: localStorage.getItem('profileObj'),
+   
     organitzacioUsuari: 'Carregant...'
   }
   this.componentDidMount = this.componentDidMount.bind(this);
@@ -38,6 +40,8 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
   }
  
 });
+
+console.log(this.state.loggedIn)
   }
   componentDidMount(){
   
@@ -66,6 +70,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
 
   }  
   render(){
+   
     const handleOpen = () => {
       this.setState({open: !this.state.open});
       console.log(this.state.open)
@@ -76,7 +81,12 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
       console.log(this.state.open)
     };
   
-  
+    var QR  =  {
+      
+      email: this.state.objQR.email,
+      googleId: this.state.objQR.googleId
+
+    }
         return(
           <div>
             <NavBar usuari={this.state.objQR} grupOrg={this.state.organitzacioUsuari} />
@@ -85,18 +95,9 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
             
               <Grid className="QrBox" item xs={12}>
                 <div className="QrBoxinga">
-              <ReactQr margin={0}  text={JSON.stringify(this.state.objQR)}  logoMargin="7"  logoSrc={logoMossen} size={200} dotScale={1} correctLevel={3} />
+              <ReactQr margin={0}  text={JSON.stringify(QR)}  logoMargin="7"  logoSrc={logoMossen} size={200} dotScale={1}  />
                </div>
-               <svg className="animacio" viewBox="45 60 400 320" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#fff" d="M 90 210 C 90 180 90 150 90 150 C 150 150 180 150 180 150 C 180 150 300 150 300 150 C 300 150 330 150 390 150 C 390 150 390 180 390 210 C 390 240 390 270 390 270 C 330 270 300 270 300 270 C 300 270 180 270 180 270 C 180 270 150 270 90 270 C 90 270 90 240 90 210" mask="url(#knockout-text)" >
-                    </path>
-                    <text x="147" y="227" color='black'>Escaneja'm</text>
-                    <mask id="knockout-text">
-                    <rect width="100%" height="100%" fill="#fff" x="0" y="0"/>
-                   
-                    </mask>
-                </svg>
-                
+        
               </Grid>
 
               
@@ -106,7 +107,10 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
                 <Button variant="contained" className="botTemp"  color="secondary">Registre de temperatures</Button>
               </Grid>
              
-              
+              {this.state.loggedIn ? null : <Redirect to={{
+                pathname: '/',
+               
+            }}/>  }
               <Link style={{color: 'transparent'}} to="/notificacions"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Notificacions del centre</Button></Link>
         <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained" > Enviar alerta</Button>
               <Dialog
@@ -136,6 +140,7 @@ firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
            
 
             </div>
+              
         )
     }
     updadeValorAlerta(evt){

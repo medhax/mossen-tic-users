@@ -36,6 +36,12 @@ if (user) {
   thus.setState({admin: false})
 }
     });
+    var usuari = localStorage.getItem('profileObj')
+    if (usuari){
+      this.setState({redirecting: true})
+    } else {
+      this.setState({redirecting: false})
+    }
   }
    handleChange(e){
      this.setState({[e.target.name]: e.target.value})
