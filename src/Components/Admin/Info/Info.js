@@ -1,8 +1,6 @@
 import React from 'react';
 import {CssBaseline, Container, Grid} from '@material-ui/core';
 import './info.scss';
-import {Link} from "react-router-dom";
-import Taula from './Taula';
 import { Redirect} from "react-router-dom";
 //--Icons--
 
