@@ -81,12 +81,7 @@ console.log(this.state.loggedIn)
       console.log(this.state.open)
     };
   
-    var QR  =  {
-      
-      email: this.state.objQR.email,
-      googleId: this.state.objQR.googleId
-
-    }
+  
         return(
           <div>
             <NavBar usuari={this.state.objQR} grupOrg={this.state.organitzacioUsuari} />
@@ -95,7 +90,7 @@ console.log(this.state.loggedIn)
             
               <Grid className="QrBox" item xs={12}>
                 <div className="QrBoxinga">
-              <ReactQr margin={0}  text={JSON.stringify(QR)}  logoMargin="7"  logoSrc={logoMossen} size={200} dotScale={1}  />
+              <ReactQr margin={0}  text={JSON.stringify(this.state.objQR)}  logoMargin="7"  logoSrc={logoMossen} size={200} dotScale={1} correctionLevel={2}  />
                </div>
         
               </Grid>
