@@ -8,7 +8,9 @@ import Animacio from '../Animacio/animacio'
 import { Link,Redirect} from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
-import * as fire from 'firebase';
+import fire from 'firebase/app';
+import 'firebase/database';
+import 'firebase/auth';
 
 
 class Login extends React.Component{

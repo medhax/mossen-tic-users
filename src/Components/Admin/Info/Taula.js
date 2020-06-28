@@ -49,7 +49,7 @@ class Taula extends React.Component{
           title: 'Foto',
           field: 'avatar',
           render: rowData => (
-            <img alt="Avatar dels usuaris"
+            <img alt="Avatar de l'usuari"
               style={{ height: 36, borderRadius: '50%' }}
               src={rowData.avatar}
             />
@@ -61,18 +61,11 @@ class Taula extends React.Component{
       ]}
       data={query =>
         new Promise((resolve, reject) => {
-          let url = 'https://reqres.in/api/users?'
-          url += 'per_page=' + query.pageSize
-          url += '&page=' + (query.page + 1)
-          fetch(url)
-            .then(response => response.json())
-            .then(result => {
-              resolve({
-                data: result.data,
-                page: result.page - 1,
-                totalCount: result.total,
-              })
-            })
+          resolve({
+            data: result.data,
+            page: result.page - 1,
+            totalCount: result.total,
+          })
         })
       }
     />

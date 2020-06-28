@@ -28,6 +28,7 @@ $col) {
  font-size: 20px;
  transition: 0.5s;
  letter-spacing: 1px;
+ border-radius: 15px;
 
  button {
   width: 101%;
@@ -138,6 +139,7 @@ $col) {
  font-size: 20px;
  margin-top: 12px;
  overflow: hidden;
+ border-radius: 10;
 }
 
 @-webkit-keyframes ani {

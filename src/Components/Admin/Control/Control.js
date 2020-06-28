@@ -7,7 +7,8 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageUploader from 'react-images-upload';
 import { exportComponentAsPNG } from "react-component-export-image";
 import MaterialTable from 'material-table'
-import * as fire from 'firebase'
+import fire from 'firebase/app';
+import 'firebase/database';
 
 class Control extends React.Component{
 constructor(props){

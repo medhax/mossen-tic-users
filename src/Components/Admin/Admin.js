@@ -9,7 +9,8 @@ import Stats from './Stats/Stats';
 import Control from './Control/Control'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
-import * as fire from 'firebase';
+import fire from 'firebase/app';
+import 'firebase/database';
 
 export default function Admin(){
   const [screen, setScreen] = React.useState(0);

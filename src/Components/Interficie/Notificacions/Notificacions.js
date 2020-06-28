@@ -3,7 +3,8 @@ import FadeIn from 'react-fade-in';
 import CardNoti from './CardNoti';
 import NavBar from '../../NavBar/NavBarInterna'
 import { Container } from '@material-ui/core';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 class Notificacions extends React.Component{
     constructor(props){

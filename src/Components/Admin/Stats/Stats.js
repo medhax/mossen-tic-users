@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line,Bar } from 'react-chartjs-2';
-import * as fire from 'firebase';
+import fire from 'firebase/app';
+import 'firebase/database';
 import {Button} from '@material-ui/core';
 
 class Stats extends React.Component{
@@ -17,7 +18,7 @@ class Stats extends React.Component{
     }
     componentDidMount(){
         let thus = this;
-     fire.database().ref('temperatures/' + this.state.avui ).on('value', function(snapshot) {
+     fire.database().ref('temperatures/recompte/' + this.state.avui ).on('value', function(snapshot) {
          thus.setState({alumnesAvui: snapshot.numChildren()})
         thus.actualitzaTemperatures(snapshot.val())
       }); 

@@ -10,12 +10,15 @@ import logoMossen from '../../img/logoMossen.png'
 import logoAlcoxide from '../../img/alcoxide.png'
 import {Link} from "react-router-dom";
 import { withRouter, Redirect } from "react-router";
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import Axios from 'axios';
+import { exportComponentAsPNG } from "react-component-export-image";
+import 'firebase/database'
 
 class Interficie extends React.Component{
   constructor(props){
     super(props);
+    this.componentRef = React.createRef();
   this.state = {
     objQR: JSON.parse(localStorage.getItem("profileObj")),
     avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
@@ -24,25 +27,11 @@ class Interficie extends React.Component{
     valorAlerta:"",
      loggedIn: localStorage.getItem('profileObj'),
    
-    organitzacioUsuari: 'Carregant...'
+    organitzacioUsuari: 'Carregant'
   }
   this.componentDidMount = this.componentDidMount.bind(this);
   }
-  componentWillMount(){
-    console.log(JSON.parse(localStorage.getItem("profileObj")))
-    let thus = this;
-    console.log(this.state.avui)
-    console.log(this.state.open)
-let emailNet = this.state.objQR.email.replace('@iesmossenalcover.cat', '')
-firebase.database().ref('/alumnes/'+emailNet).on('value', function(snapshot) {
-  if (snapshot.val() !== null){
-    thus.setState({darreraTemp: snapshot.val().darreraTemp})
-  }
  
-});
-
-console.log(this.state.loggedIn)
-  }
   componentDidMount(){
   
     let thus = this;
@@ -59,6 +48,14 @@ console.log(this.state.loggedIn)
       Axios.get("https://api.alcoxide.dev/mosseninsider/"+thus.state.objQR.email, config)
     .then(function (response) {
       thus.setState({organitzacioUsuari: response.data.organitzacioUsuari.replace('/', '').toUpperCase()})
+      let emailNet = thus.state.objQR.email.replace('@iesmossenalcover.cat', '')
+
+firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase()).child(emailNet).on('value', function(snapshot) {
+  if (snapshot.val() !== null){
+    thus.setState({darreraTemp: snapshot.val().darreraTemp})
+  }
+ 
+});
     })
     .catch(function (error) {
       console.log(error);
@@ -73,12 +70,12 @@ console.log(this.state.loggedIn)
    
     const handleOpen = () => {
       this.setState({open: !this.state.open});
-      console.log(this.state.open)
+      
     };
   const handleSendAlerta = () => {
     firebase.database().ref('alertes/').push({missatgeAlerta: this.state.valorAlerta, timestamp: new Date().toLocaleString(),nomUsuari: this.state.objQR.name, email: this.state.objQR.email })
       this.setState({open: !this.state.open});
-      console.log(this.state.open)
+     
     };
   
   
@@ -90,12 +87,12 @@ console.log(this.state.loggedIn)
             
               <Grid className="QrBox" item xs={12}>
                 <div className="QrBoxinga">
-              <ReactQr margin={0}  text={JSON.stringify(this.state.objQR)}  logoMargin="7"  logoSrc={logoMossen} size={200} dotScale={1} correctionLevel={2}  />
+              <QR ref={this.componentRef}   objQR={this.state.objQR}    />
                </div>
-        
-              </Grid>
-
               
+              </Grid> 
+
+              <Button style={{alignSelf: 'center'}} onClick={() => exportComponentAsPNG(this.componentRef)} className="exportar" color="secondary" size="small" variant="outlined">Exportar</Button>
               <Grid className="temperatura" item>
                 <h2 className="NumTempe">{this.state.darreraTemp}º</h2>
                 
@@ -146,3 +143,13 @@ console.log(this.state.loggedIn)
   }
 
 export default withRouter(Interficie);
+
+ 
+class QR extends React.Component{
+    
+  render(){
+    return(
+      <ReactQr margin={0}  text={JSON.stringify(this.props.objQR)}  logoMargin="7"  logoSrc={logoMossen} size={200} dotScale={1} correctionLevel={2}  />
+      )
+    }
+}
