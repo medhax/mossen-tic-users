@@ -68,7 +68,7 @@ class Taula extends React.Component{
   return (
     <div style={{display: 'flex',
       alignItems: 'center',
-      justifyContent:'center', flexDirection: 'column', width: '100%'}}>
+      justifyContent:'center', flexDirection: 'column', width: '100%', marhin: 20}}>
       <FormControl variant='filled' style={{margin: 10, width: 300}}>
         <InputLabel>Grup a consultar</InputLabel>
         <Select
