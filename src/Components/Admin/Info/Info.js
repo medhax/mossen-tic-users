@@ -19,24 +19,28 @@ class Info extends React.Component{
      const handle1ES = ()=> {
       this.setState({
         titol:"1r d'ESO",
+        ruta: 'alumnes/ALUMNES/ESO/1RESO/',
         redirecting:true,
       });
     }
     const handle2ES = ()=> {
       this.setState({
         titol:"2n d'ESO",
+        ruta: 'alumnes/ALUMNES/ESO/2NESO/',
         redirecting:true,
       });
     }
     const handle3ES = ()=> {
       this.setState({
         titol:"3r d'ESO",
+        ruta: 'alumnes/ALUMNES/ESO/3RESO/',
         redirecting:true,
       });
     }
     const handle4ES = ()=> {
       this.setState({
         titol:"4t d'ESO",
+        ruta: 'alumnes/ALUMNES/ESO/4TESO/',
         redirecting:true,
       });
     }
@@ -44,18 +48,21 @@ class Info extends React.Component{
     const handle1Ba = ()=> {
       this.setState({
         titol:"1r de Batxiller",
+        ruta: 'alumnes/ALUMNES/BAT/1RBAT/',
         redirecting:true,
       });
     }
     const handle2Ba = ()=> {
       this.setState({
         titol:"2n de Batxiller",
+        ruta: 'alumnes/ALUMNES/BAT/2NBAT/',
         redirecting:true,
       });
     }
     const handleFP = ()=> {
       this.setState({
         titol:"FP",
+        ruta: 'alumnes/ALUMNES/FP/',
         redirecting:true,
       });
     }
@@ -157,7 +164,7 @@ class Info extends React.Component{
   </Container>
   {this.state.redirecting ? <Redirect to={{
             pathname: '/taula',
-            state: { titol: this.state.titol }
+            state: { titol: this.state.titol, ruta: this.state.ruta }
         }}/> : null }
 </div>  
   );

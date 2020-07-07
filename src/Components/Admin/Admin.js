@@ -4,6 +4,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import AppsIcon from '@material-ui/icons/Apps';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import './Admin.css'
+import Container from '@material-ui/core/Container'
 import Info from './Info/Info';
 import Stats from './Stats/Stats';
 import Control from './Control/Control'
@@ -48,19 +49,23 @@ function sortir(){
   return (
       <div>
           {canviaScreen()}
-    <BottomNavigation value={screen} showLabels className="bottomNav" onChange={(event, newScreen) => {
+       
+          <BottomNavigation value={screen} className="bottomNav" onChange={(event, newScreen) => {
         setScreen(newScreen);
       }}
       
       
     >
-      <BottomNavigationAction label="Informació" icon={<InfoIcon />} />
-      <BottomNavigationAction label="Estadística" icon={<EqualizerIcon />} />
-      <BottomNavigationAction label="Control" icon={<AppsIcon />} />
-     <Link to="/"><IconButton color="secondary"  component="span" style={{float: 'right', alignSelf: 'flex-end'}} onClick={()=> sortir()}>
+      <BottomNavigationAction showLabel label="Informació" icon={<InfoIcon />} />
+      <BottomNavigationAction showLabel label="Estadística" icon={<EqualizerIcon />} />
+      <BottomNavigationAction showLabel label="Control" icon={<AppsIcon />} />
+      <Link to="/"><IconButton color="secondary"  component="span" style={{float: 'right', alignSelf: 'flex-end'}} onClick={()=> sortir()}>
           <ExitToAppIcon /> 
         </IconButton></Link>
     </BottomNavigation>
+             
+    
+    
     </div>
   );
     }

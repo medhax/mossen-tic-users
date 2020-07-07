@@ -34,11 +34,12 @@ class Stats extends React.Component{
             let tempPersones = [];
             var dataset = Object.values(persona);
             for (const usuari of dataset) {  
-             
+          
                 nomPersones.push(usuari.nomUsuari)
                 tempPersones.push(usuari.tempAvui)
                
             }
+            console.log(tempPersones)
             this.setState({labelsTempAvui: nomPersones, dataTempAvui: tempPersones})
             this.forceUpdate()
         } else {
