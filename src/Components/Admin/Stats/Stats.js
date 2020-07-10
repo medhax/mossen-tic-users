@@ -3,14 +3,18 @@ import { Line,Bar } from 'react-chartjs-2';
 import fire from 'firebase/app';
 import 'firebase/database';
 import {Button} from '@material-ui/core';
+import moment from 'moment';
+import 'moment/locale/es';
+
 
 class Stats extends React.Component{
     constructor(props){
         super(props);
+        moment.locale('es');
         this.state ={
             labelsTempAvui: null,
             dataTempAvui: null,
-            avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
+            avui: moment().format('l').replace(/\//g,"-"),
             alumnesAvui: 0
         }
         this.componentDidMount = this.componentDidMount.bind(this);
@@ -101,7 +105,7 @@ class Stats extends React.Component{
                     </div>
                     <div className="box-1">
                     <Button variant="contained" color="secondary" onClick={() => (
-                        fire.database().ref('temperatures/'+this.state.avui+ '/llullluis15825').set({tempAvui: this.getRndInteger(34,38), nomUsuari: 'llullluis15825'})
+                        fire.database().ref('temperatures/recompte/'+this.state.avui+ '/llullluis15825').set({tempAvui: this.getRndInteger(34,38), nomUsuari: 'llullluis15825'})
                     )}>
                         Randomitza lluiset (i genera si és el primer pic del dia)
                         </Button>

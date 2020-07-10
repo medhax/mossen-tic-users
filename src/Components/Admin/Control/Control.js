@@ -9,13 +9,16 @@ import { exportComponentAsPNG } from "react-component-export-image";
 import MaterialTable from 'material-table'
 import fire from 'firebase/app';
 import 'firebase/database';
+import moment from 'moment';
+import 'moment/locale/es';
 
 class Control extends React.Component{
 constructor(props){
   super(props);
+  moment.locale('es')
   this.state = {
     llistaAlertes: [],
-    avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
+    avui: moment().format('l').replace(/\//g,"-"),
   }
   this.componentDidMount = this.componentDidMount.bind(this);
 }

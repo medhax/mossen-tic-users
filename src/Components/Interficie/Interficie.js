@@ -14,14 +14,17 @@ import firebase from 'firebase/app';
 import Axios from 'axios';
 import { exportComponentAsPNG } from "react-component-export-image";
 import 'firebase/database'
+import moment from 'moment';
+import 'moment/locale/es';
 
 class Interficie extends React.Component{
   constructor(props){
     super(props);
+    moment.locale('es');
     this.componentRef = React.createRef();
   this.state = {
     objQR: JSON.parse(localStorage.getItem("profileObj")),
-    avui: new Date().toLocaleDateString('es-ES').replace(/[/]/g,'-'),
+    avui: moment().format('l').replace(/\//g,"-"),
     darreraTemp: '--',
     open:false,
     valorAlerta:"",
@@ -73,7 +76,7 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
       
     };
   const handleSendAlerta = () => {
-    firebase.database().ref('alertes/').push({missatgeAlerta: this.state.valorAlerta, timestamp: new Date().toLocaleString(),nomUsuari: this.state.objQR.name, email: this.state.objQR.email })
+    firebase.database().ref('alertes/').push({missatgeAlerta: this.state.valorAlerta, timestamp: new moment().format('l').replace(/\//g,"-"),nomUsuari: this.state.objQR.name, email: this.state.objQR.email })
       this.setState({open: !this.state.open});
      
     };
