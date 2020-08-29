@@ -95,7 +95,7 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
               
               </Grid> 
 
-              <Button style={{alignSelf: 'center'}} onClick={() => exportComponentAsPNG(this.componentRef)} className="exportar" color="secondary" size="small" variant="outlined">Exportar</Button>
+              <Button style={{alignSelf: 'center'}} onClick={() => exportComponentAsPNG(this.componentRef)} className="exportar" color="secondary" size="small" variant="outlined">Exportar QR</Button>
               <Grid className="temperatura" item>
                 <h2 className="NumTempe">{this.state.darreraTemp}º</h2>
                 
