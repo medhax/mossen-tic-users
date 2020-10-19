@@ -34,9 +34,12 @@ class Interficie extends React.Component{
   }
   this.componentDidMount = this.componentDidMount.bind(this);
   }
- 
+
+
   componentDidMount(){
-  
+    if (!this.state.loggedIn){
+return <Redirect to="/" />
+    }
     let thus = this;
     Axios.post('https://api.alcoxide.dev/login', {
       username: 'mosseninsider',
@@ -50,7 +53,8 @@ class Interficie extends React.Component{
       }
       Axios.get("https://api.alcoxide.dev/mosseninsider/"+thus.state.objQR.email, config)
     .then(function (response) {
-      thus.setState({organitzacioUsuari: response.data.organitzacioUsuari.replace('/', '').toUpperCase()})
+      console.log(response)
+      thus.setState({organitzacioUsuari: response.data.orgUnitPath.replace('/', '').toUpperCase()})
       let emailNet = thus.state.objQR.email.replace('@iesmossenalcover.cat', '')
 
 firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase()).child(emailNet).on('value', function(snapshot) {
@@ -86,7 +90,7 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
           <div>
             <NavBar usuari={this.state.objQR} grupOrg={this.state.organitzacioUsuari} />
           
-            <Grid container className="root" alignItems="center" direction="column" justify="center">
+            <Grid container className="root" alignItems="center" direction="column" justify="space-between">
             
               <Grid className="QrBox" item xs={12}>
                 <div className="QrBoxinga">
@@ -96,11 +100,7 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
               </Grid> 
 
               <Button style={{alignSelf: 'center'}} onClick={() => exportComponentAsPNG(this.componentRef)} className="exportar" color="secondary" size="small" variant="outlined">Exportar QR</Button>
-              <Grid className="temperatura" item>
-                <h2 className="NumTempe">{this.state.darreraTemp}º</h2>
-                
-                <Button variant="contained" className="botTemp"  color="secondary">Registre de temperatures</Button>
-              </Grid>
+           
              
               {this.state.loggedIn ? null : <Redirect to={{
                 pathname: '/',

@@ -1,11 +1,11 @@
 import React from 'react';
-import './Login.scss'
+import './Login.css'
 import FadeIn from 'react-fade-in';
-import {Button,Grid,TextField,Dialog,DialogActions,DialogContent,DialogTitle} from '@material-ui/core';
+import {Button,Grid} from '@material-ui/core';
 import logoAlcoxide from '../../img/alcoxide.png'
 import logoMossen from '../../img/logoMossen.png'
 import Animacio from '../Animacio/animacio'
-import { Link,Redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
 import { withRouter } from "react-router";
 import fire from 'firebase/app';
@@ -60,19 +60,19 @@ if (user) {
     render(){
      const handleOpen = () => {
         this.setState({
-            open : !this.state.open,
+            admin : !this.state.admin,
         });
     }
       const responseGoogleSuccess = (response) => {
         localStorage.setItem('profileObj', JSON.stringify(response.profileObj)); 
-        console.log(JSON.stringify(response.profileObj))
+        console.warn(JSON.stringify(response.profileObj))
         this.setState({profileObj: response.profileObj,
                     redirecting:true
         });
         localStorage.setItem('profileObj', JSON.stringify(response.profileObj))
         }
       const responseGoogleFailure = (response) => {
-        alert("Algo falla!" + JSON.stringify(response));
+        console.log("Error d'inici de sessió : " + JSON.stringify(response));
         }
       
 
@@ -80,7 +80,7 @@ if (user) {
           
             <FadeIn>   
                        
-            <Grid container direction="column" alignItems="center" spacing={0}>
+            <Grid container direction="column" alignItems="center" justify="space-between" spacing={0}>
               <Grid item m={12}>
                <img alt="logoMossen" className="logoMossen" src={logoMossen}/>        
               </Grid>
@@ -97,9 +97,8 @@ if (user) {
   />  
    
   <br/>
-               <Button variant="outlined" className="botonets" onClick={handleOpen} color="secondary">Versió d'administrador</Button>
-              <br/><br/>
-              <Link  style={{color: 'transparent'}} to="/info"> <Button variant="outlined" className="botonets" color="primary">Estadística global</Button></Link>
+               <Button variant="outlined" className="botonets" onClick={handleOpen} color="secondary">Administració</Button>
+              
               </Grid>
              
               <Grid item  xs={12} style={{bottom: 10}}>
@@ -111,32 +110,11 @@ if (user) {
            
         }}/> : null }
          {this.state.admin ? <Redirect to={{
-            pathname: '/admin',
+            pathname: '/admin/',
            
         }}/> : null }
 
-        <Dialog
-              fullWidth
-              maxWidth={"sm"}
-                open={this.state.open}        
-                keepMounted
-                onClose={handleOpen}
-              >
-                <DialogTitle>{"Accedir a la versió d'administrador"}</DialogTitle>
-                <DialogContent>
-                  <TextField variant="outlined" label="Usuari" value={this.state.usernameAdmin} name="usernameAdmin" onChange={this.handleChange}/>
-                  <br/><br/>
-                  <TextField variant="outlined" label="Contrasenya" type="password" value={this.state.passwordAdmin}  name="passwordAdmin" onChange={this.handleChange} />
-                </DialogContent>
-                <DialogActions>
-                <Button onClick={handleOpen} color="secondary">
-                    Tancar
-                  </Button>
-                  <Button  color="primary" onClick={this.handleLogin}>
-                    Accedir
-                  </Button>
-                </DialogActions>
-              </Dialog>
+     
             </FadeIn>
         )
     }
