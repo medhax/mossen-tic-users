@@ -6,7 +6,7 @@ class Animacio extends React.Component{
     componentDidMount() {
         setTimeout(function () {
             
-        }, 2200);
+        }, 1000);
     }
     
     render(){

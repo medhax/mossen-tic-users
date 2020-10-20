@@ -102,7 +102,7 @@ if (user) {
               </Grid>
              
               <Grid item  xs={12} style={{bottom: 10}}>
-                <img alt="logoAlcoxide" className="logoAlcoxide" width="55%" src={logoAlcoxide}/>
+                <img alt="logoAlcoxide" className="logoAlcoxideLogin" width="55%" src={logoAlcoxide}/>
             </Grid>
             </Grid> 
             {this.state.redirecting ? <Redirect to={{

@@ -14,7 +14,7 @@
 	margin: 0 2vw;
 	font-size: 8vmin;
 	font-weight: bold;
-	animation: animate 2.4s linear infinite;
+	animation: animate 1s linear infinite;
 	font-family: sans-serif;
 	align-self: center
 }

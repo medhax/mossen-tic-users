@@ -92,12 +92,12 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
           
             <Grid container className="root" alignItems="center" direction="column" justify="space-between">
             
-              <Grid className="QrBox" item xs={12}>
+             
                 <div className="QrBoxinga">
               <QR ref={this.componentRef}   objQR={this.state.objQR}    />
                </div>
               
-              </Grid> 
+
 
               <Button style={{alignSelf: 'center'}} onClick={() => exportComponentAsPNG(this.componentRef)} className="exportar" color="secondary" size="small" variant="outlined">Exportar QR</Button>
            
@@ -106,8 +106,8 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
                 pathname: '/',
                
             }}/>  }
-              <Link style={{color: 'transparent'}} to="/notificacions"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Notificacions del centre</Button></Link>
-        <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained" > Enviar alerta</Button>
+              <Link style={{color: 'transparent'}} to="/fitxers"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Els meus fitxers</Button></Link>
+        <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained" > Enviar dubte</Button>
               <Dialog
               fullWidth
               maxWidth={"sm"}
@@ -129,7 +129,7 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
                 </DialogActions>
               </Dialog>
      
-      <img alt="logoAlcoxide" src={logoAlcoxide} className="logoAlco"/>
+      <a className="linkAlcoxide" href="https://alcoxide.dev"><img className="logoAlcoxide"alt="logoAlcoxide" src={logoAlcoxide} /></a>
             </Grid>
             
            

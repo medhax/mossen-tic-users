@@ -4,7 +4,7 @@ import Interficie from '../Components/Interficie/Interficie'
 import { Switch, Route, Router} from 'react-router-dom';
 import history from './history';
 
-import Notificacions from '../Components/Interficie/Notificacions/Notificacions'
+import Fitxers from '../Components/Interficie/Fitxers/Fitxers'
 
 import WorldInfo from '../Components/WorldInfo/WorldInfo'
 export default function Routes() {        
@@ -19,8 +19,8 @@ export default function Routes() {
           <Route path="/interficie">
             <Interficie />
           </Route>
-          <Route path="/notificacions">
-            <Notificacions />
+          <Route path="/fitxers">
+            <Fitxers />
           </Route>
          
           <Route path="/info">

@@ -24,26 +24,28 @@ body{
 
 .root{
     margin-top:80px !important ;
-    display: flex ;
-    
-    flex-direction: column;
-    align-items: center;
+   height: 90vh;
     
 }
 
 .botoPrinc{
-    height: 5vh;
+    height: 10vh;
     width: 65vw;
-    border-radius: 20px !important;
+    border-radius: 5px !important;
     margin:10px 0px 2px 0px !important;
     position: relative;
 }
 
 
-.logoAlco{
+.logoAlcoxide{
     opacity: 0.6;
     width: 40%;
+    
 }
+.linkAlcoxide {
+    text-align: center;
+}
+
 .QrBoxinga{
     
     padding:15px ;
@@ -55,4 +57,5 @@ body{
 .textarea{
     width: 95%;
     font-family: Roboto;
+    border: none;
 }
