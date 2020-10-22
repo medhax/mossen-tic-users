@@ -19,6 +19,9 @@ export default function Routes() {
           <Route path="/interficie">
             <Interficie />
           </Route>
+          <Route path="/configuracio">
+            <Fitxers />
+          </Route>
           <Route path="/fitxers">
             <Fitxers />
           </Route>

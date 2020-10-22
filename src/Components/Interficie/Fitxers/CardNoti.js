@@ -5,7 +5,9 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
+import Link from '@material-ui/core/Link';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import HelpIcon from '@material-ui/icons/Help';
 const useStyles = makeStyles({
   root: {
     marginBottom: 20,
@@ -32,9 +34,11 @@ export default function CardNoti(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.body}
-          </Typography>
+          <Link style={{display: 'flex', alignItems: 'center'}} href={props.body} >
+  <VisibilityIcon />Veure fitxer <hr style={{color: 'transparent'}}/>  <Link style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}} href={props.body} >
+ <HelpIcon /> Ajuda 
+  </Link>
+  </Link>
         </CardContent>
       </CardActionArea>
     </Card>

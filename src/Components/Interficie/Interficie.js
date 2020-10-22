@@ -3,6 +3,7 @@ import './Interficie.css'
 import './efectes.scss' 
 import WarningIcon from '@material-ui/icons/Warning';
 import HelpIcon from '@material-ui/icons/Help';
+import SettingsIcon from '@material-ui/icons/Settings';
 import NavBar from '../NavBar/NavBar';
 import {Button,Grid, DialogActions,Dialog,DialogContent,TextareaAutosize,DialogTitle} from '@material-ui/core';
 import ReactQr from 'react-awesome-qr'
@@ -55,14 +56,9 @@ return <Redirect to="/" />
     .then(function (response) {
       console.log(response)
       thus.setState({organitzacioUsuari: response.data.orgUnitPath.replace('/', '').toUpperCase()})
-      let emailNet = thus.state.objQR.email.replace('@iesmossenalcover.cat', '')
+     
 
-firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase()).child(emailNet).on('value', function(snapshot) {
-  if (snapshot.val() !== null){
-    thus.setState({darreraTemp: snapshot.val().darreraTemp})
-  }
- 
-});
+
     })
     .catch(function (error) {
       console.log(error);
@@ -108,6 +104,7 @@ firebase.database().ref('/alumnes/'+response.data.organitzacioUsuari.toUpperCase
             }}/>  }
               <Link style={{color: 'transparent'}} to="/fitxers"><Button  className="botoPrinc" color="primary" startIcon={<HelpIcon />} variant="contained">Els meus fitxers</Button></Link>
         <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<WarningIcon />} variant="contained" > Enviar dubte</Button>
+        <Link style={{color: 'transparent'}} to="/configuracio"> <Button className="botoPrinc" color="primary" onClick={handleOpen} startIcon={<SettingsIcon />} variant="contained" > Configuració</Button></Link>
               <Dialog
               fullWidth
               maxWidth={"sm"}
