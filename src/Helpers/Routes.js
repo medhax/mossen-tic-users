@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../Components/Login/Login'
 import Interficie from '../Components/Interficie/Interficie'
+import Config from '../Components/Configuracio/Configuracio'
 import { Switch, Route, Router} from 'react-router-dom';
 import history from './history';
 
@@ -20,7 +21,7 @@ export default function Routes() {
             <Interficie />
           </Route>
           <Route path="/configuracio">
-            <Fitxers />
+            <Config />
           </Route>
           <Route path="/fitxers">
             <Fitxers />
