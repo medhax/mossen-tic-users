@@ -87,8 +87,9 @@
 
 .copyR{
 	position: absolute;
+	width: 100vw;
 	bottom: 20px;
-	align-self: center;
+	text-align: center;
 	font-weight: 500;
 	font-size:small ;
 

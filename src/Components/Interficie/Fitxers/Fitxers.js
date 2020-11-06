@@ -1,7 +1,7 @@
 import React from 'react';
 import FadeIn from 'react-fade-in';
 import CardNoti from './CardNoti';
-import NavBar from '../../NavBar/NavBarInterna'
+import NavBarInterna from '../../NavBar/NavBarInterna'
 import { Container } from '@material-ui/core';
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -18,7 +18,8 @@ class Notificacions extends React.Component{
             fitxers: [],
             arxiusPujats: [],
             emailNet: '',
-            open: false
+            open: false,
+            objQR: JSON.parse(localStorage.getItem("profileObj")),
         }
         this.componentDidMount = this.componentDidMount.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
@@ -155,7 +156,7 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
     marginLeft: "8px",
     display: "block"}}>
            <FadeIn/>
-             <NavBar/> 
+             <NavBarInterna usuari={this.state.objQR} /> 
              <Container style={{height: '85vh',flex:1, justifyContent: "center", alignItems:"center"}} maxWidth="sm">
             
           

@@ -3,7 +3,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Container from '@material-ui/core/Container';
-import NavBar from '../NavBar/NavBar';
+import NavBarInterna from '../NavBar/NavBarInterna';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -35,7 +35,7 @@ class Config extends React.Component{
     
      loggedIn: localStorage.getItem('profileObj'),
      configUser: {},
-    organitzacioUsuari: 'Carregant',
+   
     dialogOpen: false
   }
   this.componentDidMount = this.componentDidMount.bind(this);
@@ -59,6 +59,7 @@ saveUserInfo() {
     emailPersonal: thus.state.userEmail
   });
   this.openDialog()
+  this.forceUpdate()
 }
   componentDidMount(){
 
@@ -118,13 +119,13 @@ return <Redirect to="/" />
   
         return(
           <div>
-            <NavBar usuari={this.state.objQR} grupOrg={this.state.organitzacioUsuari} />
+            <NavBarInterna usuari={this.state.objQR}  />
             <CssBaseline />
       <Container maxWidth="sm">
         
         <List component="div"  aria-label="mailbox folders" style={{top: 75, height: '90vh', display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
       <ListItem divider>
-        <ListItemText primary={this.state.objQR.email} secondary="Correu electrònic personal"/>
+        <ListItemText primary={this.state.objQR.email} secondary="Correu electrònic corportatiu"/>
       </ListItem>
       
       <ListItem  divider>
@@ -136,7 +137,7 @@ return <Redirect to="/" />
       {this.state.configUser ? '': <Button onClick={this.openDialog} color="primary">Crear la meva configuració</Button>}
       </ListItem>
       <ListItem  divider>
-      <ListItemText primary={this.state.configUser ? this.state.configUser.codepen :'Sense definir'} secondary="Enllaç al CodePen.io"/>
+      <ListItemText primary={this.state.configUser ? this.state.configUser.emailPersonal :'Sense definir'} secondary="Correu electrònic personal"/>
       {this.state.configUser ? '': <Button onClick={this.openDialog} color="primary">Crear la meva configuració</Button>}
       </ListItem>
       <ListItem  divider>
@@ -179,9 +180,7 @@ return <Redirect to="/" />
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.openDialog} color="primary">
-            Cancel·lar
-          </Button>
+          
           <Button onClick={this.saveUserInfo} color="primary">
             Desar
           </Button>

@@ -1,11 +1,12 @@
 
 import React from 'react';
-import {AppBar,IconButton } from '@material-ui/core';
+import {AppBar,IconButton, MenuItem} from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
 import {Link} from "react-router-dom";
+import Avatar from '@material-ui/core/Avatar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +28,17 @@ const useStyles = makeStyles((theme) => ({
         return(
           
           <AppBar style={{padding: 0}}  color="inherit" position="fixed" >
-            <Toolbar >
-            
+             <Toolbar >
+            <Avatar className={classes.menuButton}  src={props.usuari.imageUrl}/>
+              <MenuItem className={classes.title}> 
+                <div>
+                <Typography  className={classes.txtNav} >{props.usuari.name}</Typography>
+                <span></span>
+                <Typography className={classes.txtNav} >{props.usuari.email}</Typography>
+                <span></span>
+                <Typography className={classes.txtNav} >{props.grupOrg}</Typography>
+                </div>
+               </MenuItem>
 
               <Link style={{color: 'transparent'}} to="/interficie"><IconButton className={classes.icono} aria-label="log out" component="span">
             

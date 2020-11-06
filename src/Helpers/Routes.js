@@ -6,7 +6,7 @@ import { Switch, Route, Router, Redirect} from 'react-router-dom';
 import history from './history';
 import Err404 from '../Components/Errors/404'
 import Fitxers from '../Components/Interficie/Fitxers/Fitxers'
-
+import ProtectedRoute from './protected-routes'
 import WorldInfo from '../Components/WorldInfo/WorldInfo'
 export default function Routes() {        
   return (
@@ -16,16 +16,10 @@ export default function Routes() {
           <Route exact path="/">
             <Login />
           </Route>
+         <ProtectedRoute path="/interficie" component={Interficie} />
+         <ProtectedRoute path="/configuracio" component={Config} />
+         <ProtectedRoute path="/fitxers" component={Fitxers} />
          
-          <Route path="/interficie">
-            <Interficie />
-          </Route>
-          <Route path="/configuracio">
-            <Config />
-          </Route>
-          <Route path="/fitxers">
-            <Fitxers />
-          </Route>
          
           <Route path="/info">
             <WorldInfo />

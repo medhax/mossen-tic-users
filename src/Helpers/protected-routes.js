@@ -1,24 +1,24 @@
-import React, {useEffect, useState} from "react";
-import {Route, Redirect} from 'react-router-dom';
-import {isLoggedIn} from './Components/Helpers/Auth-Helper';
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 
-
-
-export const ProtectedRoute = ({ component: Component, ...rest}) => {
-    const [userBool, setUserBool] = useState(this.props.isValid)
-
-    console.log(userBool)
-    return (
-        <Route {...rest}
-        render={props => {
-            if (userBool === true){
-                return <Component {...props} />
-            } else if (userBool === false) {
-    return <Redirect to={ {
-    pathname: "/"} }/>
-            }
-            
-        }}
-        />
-    )
+class ProtectedRoute extends React.Component {
+checkUser(){
+    if (localStorage.getItem('profileObj')){
+        return true
+    }  else {
+        return false
+    }
 }
+    render() {
+        const Component = this.props.component;
+        const isAuthenticated = this.checkUser();
+       
+        return isAuthenticated ? (
+            <Component />
+        ) : (
+            <Redirect to={{ pathname: '/' }} />
+        );
+    }
+}
+
+export default ProtectedRoute;
